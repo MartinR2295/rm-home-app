@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BaseLabelComponent } from '../base-label/base-label';
 
 /**
  * Generated class for the LightGrayLabelComponent component.
@@ -10,13 +11,6 @@ import { Component } from '@angular/core';
   selector: 'light-gray-label',
   templateUrl: 'light-gray-label.html'
 })
-export class LightGrayLabelComponent {
-
-  text: string;
-
-  constructor() {
-    console.log('Hello LightGrayLabelComponent Component');
-    this.text = 'Hello World';
-  }
+export class LightGrayLabelComponent extends BaseLabelComponent {
 
 }

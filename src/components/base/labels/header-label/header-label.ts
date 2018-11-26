@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BaseLabelComponent } from '../base-label/base-label';
 
 /**
  * Generated class for the HeaderLabelComponent component.
@@ -10,13 +11,6 @@ import { Component } from '@angular/core';
   selector: 'header-label',
   templateUrl: 'header-label.html'
 })
-export class HeaderLabelComponent {
-
-  text: string;
-
-  constructor() {
-    console.log('Hello HeaderLabelComponent Component');
-    this.text = 'Hello World';
-  }
+export class HeaderLabelComponent extends BaseLabelComponent {
 
 }

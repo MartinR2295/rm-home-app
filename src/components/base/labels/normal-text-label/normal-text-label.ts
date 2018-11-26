@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BaseLabelComponent } from '../base-label/base-label';
 
 /**
  * Generated class for the NormalTextLabelComponent component.
@@ -10,13 +11,8 @@ import { Component } from '@angular/core';
   selector: 'normal-text-label',
   templateUrl: 'normal-text-label.html'
 })
-export class NormalTextLabelComponent {
+export class NormalTextLabelComponent extends BaseLabelComponent {
 
   text: string;
-
-  constructor() {
-    console.log('Hello NormalTextLabelComponent Component');
-    this.text = 'Hello World';
-  }
 
 }

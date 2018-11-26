@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the BaseLabelComponent component.
@@ -12,11 +12,9 @@ import { Component } from '@angular/core';
 })
 export class BaseLabelComponent {
 
-  text: string;
+  @Input() text: string;
 
   constructor() {
-    console.log('Hello BaseLabelComponent Component');
-    this.text = 'Hello World';
   }
 
 }
