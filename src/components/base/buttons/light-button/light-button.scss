@@ -1,3 +1,8 @@
 light-button {
 
 }
+
+light-button > base-button > button {
+    background-color: color($buttonColors, light, base);
+    color: color($buttonColors, dark, base);
+}

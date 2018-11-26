@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseViewComponent } from '../../base-view/base-view';
 
 /**
@@ -13,7 +13,7 @@ import { BaseViewComponent } from '../../base-view/base-view';
 })
 export class BaseButtonComponent extends BaseViewComponent {
 
-  text: string = "ButtonText";
+  @Input() text: string = "ButtonText";
 
   constructor() {
     super()

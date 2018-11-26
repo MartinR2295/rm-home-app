@@ -2,6 +2,7 @@ dark-button {
    
 }
 
-dark-button > button {
-    background-color: color($colors, primary, base);
+dark-button > base-button > button {
+    background-color: color($buttonColors, dark, base);
+    color: color($buttonColors, light, base);
 }

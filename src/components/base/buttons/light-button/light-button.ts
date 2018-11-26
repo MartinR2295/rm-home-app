@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BaseButtonComponent } from '../base-button/base-button';
 
 /**
  * Generated class for the LightButtonComponent component.
@@ -10,13 +11,6 @@ import { Component } from '@angular/core';
   selector: 'light-button',
   templateUrl: 'light-button.html'
 })
-export class LightButtonComponent {
-
-  text: string;
-
-  constructor() {
-    console.log('Hello LightButtonComponent Component');
-    this.text = 'Hello World';
-  }
+export class LightButtonComponent extends BaseButtonComponent {
 
 }
