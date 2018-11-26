@@ -1,9 +1,8 @@
-@import "~variables.scss";
-
 dark-button {
    
 }
 
-dark-button > button {
-    background-color: $primary;
+dark-button > base-button > button {
+    background-color: color($buttonColors, dark, base);
+    color: color($buttonColors, light, base);
 }
