@@ -45,6 +45,12 @@ $buttonColors: (
   light: map-get($colors, secondary)
 );
 
+$labelColors: (
+  black: black,
+  lightGray: lightgray,
+  killerRed: #bb0a1e
+);
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
