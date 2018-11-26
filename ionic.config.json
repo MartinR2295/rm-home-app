@@ -1,5 +1,7 @@
 {
   "name": "rm-home-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
