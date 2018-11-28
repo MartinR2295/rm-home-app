@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  inputVal:string = "Eingabe"
+  inputVal:string = ""
 
   constructor(public navCtrl: NavController) {
 

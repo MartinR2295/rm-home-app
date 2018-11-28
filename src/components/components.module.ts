@@ -11,6 +11,8 @@ import { HeaderLabelComponent } from './base/labels/header-label/header-label';
 import { BaseInputComponent } from './input/base-input/base-input';
 import { FormsModule } from '@angular/forms';
 import { DefaultInputComponent } from './input/default-input/default-input';
+import { TextIconInputComponent } from './input/text-icon-input/text-icon-input';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [BaseViewComponent,
@@ -22,8 +24,9 @@ import { DefaultInputComponent } from './input/default-input/default-input';
     LightGrayLabelComponent,
     HeaderLabelComponent,
     BaseInputComponent,
-    DefaultInputComponent],
-	imports: [BrowserModule, FormsModule],
+    DefaultInputComponent,
+    TextIconInputComponent],
+	imports: [BrowserModule, FormsModule, IonicModule],
 	exports: [BaseViewComponent,
     BaseButtonComponent,
     DarkButtonComponent,
@@ -33,6 +36,7 @@ import { DefaultInputComponent } from './input/default-input/default-input';
     LightGrayLabelComponent,
     HeaderLabelComponent,
     BaseInputComponent,
-    DefaultInputComponent]
+    DefaultInputComponent,
+    TextIconInputComponent]
 })
 export class ComponentsModule {}

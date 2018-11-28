@@ -1,0 +1,18 @@
+<ion-grid>
+  <ion-row>
+  <ion-col class="text-icon-input-grid-col" col-10>
+    <base-input
+  [(value)] = "value"
+  [id]="id" 
+  [type]="type" 
+  [name]="name" 
+  [placeholder]="placeholder" 
+  [class]="class" 
+  [disabled]="disabled"
+  [isRequired]="isRequired"></base-input>
+</ion-col>
+<ion-col class="text-icon-input-grid-col flex-col icon-grid-col">
+    <ion-icon [name]="icon"></ion-icon>
+  </ion-col>
+  </ion-row>
+</ion-grid>

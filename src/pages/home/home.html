@@ -5,18 +5,30 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <base-button text="base Button"></base-button>
-  <dark-button text="darkButton" (click)="petar()"></dark-button>
-  <light-button text="lightButton"></light-button>
-  <default-input [(value)]="inputVal"></default-input>
-  {{inputVal}}
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-grid>
+  <ion-row>
+    <h2>Welcome to Ionic!</h2>
+  </ion-row>
+  <ion-row>
+    <base-button text="base Button"></base-button>
+  </ion-row>
+  <ion-row>
+    <dark-button text="darkButton" (click)="petar()"></dark-button>
+  </ion-row>
+  <ion-row>
+    <light-button text="lightButton"></light-button>
+  </ion-row>
+  <ion-row>
+    <default-input [placeholder]="'Machen Sie Ihre Eingabe!'" [(value)]="inputVal"></default-input>
+  </ion-row>
+  <ion-row>
+    <h2>InputWithIcon</h2>
+  </ion-row>
+  <ion-row>
+    <text-icon-input [placeholder]="'Machen Sie Ihre Eingabe!'" [(value)]="inputVal" [icon]="'person'"></text-icon-input>
+  </ion-row>
+  <ion-row>
+    {{inputVal}}
+  </ion-row>
+</ion-grid>
 </ion-content>
