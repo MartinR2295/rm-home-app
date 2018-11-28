@@ -1,3 +1,7 @@
 base-input {
 color: red;
 }
+
+base-input > input {
+    background-color: blue;
+}

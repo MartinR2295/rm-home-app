@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ComponentsModule } from '../components/components.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ComponentsModule } from '../components/components.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
