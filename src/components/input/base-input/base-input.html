@@ -8,11 +8,12 @@
 
 
 <input 
-id={{id}} 
-type={{type}} 
+[id]="id"
+[type]="type"
 name={{name}} 
 placeholder={{placeholder}} 
 class={{class}} 
 disabled={{disabled}} 
 value={{value}}
-required={{isRequired}}>
+required={{isRequired}}
+[(ngModel)]="model"> 
