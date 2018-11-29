@@ -16,6 +16,9 @@ import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
+import { SearchPage } from '../pages/search/search';
+import { SettingsPage } from '../pages/settings/settings';
+import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { AuthProvider } from '../providers/auth/auth';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    SearchPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -40,14 +45,17 @@ import { AuthProvider } from '../providers/auth/auth';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    SearchPage,
+    SettingsPage
   ],
   providers: [
     HTTP,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    AlertHelperProvider
   ]
 })
 export class AppModule {}

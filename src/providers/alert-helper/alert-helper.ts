@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
+//Test Loading Screen
+// public loadingCtrl: LoadingController, private splashScreen: SplashScreen
 
 /*
   Generated class for the AlertHelperProvider provider.
@@ -28,5 +32,20 @@ export class AlertHelperProvider {
     });
     alert.present();
   }
+
+  
+  // loadingAnimation() {
+  //   let loading = this.loadingCtrl.create({
+  //     spinner: 'hide',
+  //     content: "Hallo",
+  //     duration: 5000
+  //   });
+  
+  //   loading.onDidDismiss(() => {
+  //     console.log('Laden abbrechen');
+  //   });
+  
+  //   loading.present();
+  // }
 
 }

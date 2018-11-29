@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Alert } from 'ionic-angular';
 import { LoginModel } from '../../app/models/LoginModel';
 import { TabsPage } from '../tabs/tabs';
+import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,7 +20,7 @@ export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertHelper: AlertHelperProvider) {
   }
 
   ionViewDidLoad() {
@@ -31,5 +32,13 @@ export class LoginPage {
     this.loginData.username = "TestUsername";
 
     this.navCtrl.push(TabsPage);
+
+    this.showError("Login Erfolgreich");
+  }
+
+  showError(text:string) {
+    this.alertHelper.sendAlert("Error",text);
+    //this.alertHelper.loadingAnimation();
+    //this.alertHelper.test();
   }
 }
