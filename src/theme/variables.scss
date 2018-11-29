@@ -97,3 +97,9 @@ $labelColors: (
 @import "noto-sans";
 
 $toolbar-background: map-get($colors, primary);
+
+ion-app.cameraView ion-nav{opacity:0}
+
+ion-app.cameraView,ion-app.cameraView ion-content,ion-app.cameraView .nav-decor,{
+  background: transparent url("../assets/imgs/camera/camera_preview.png") !important;
+  background-size: 100% 100% !important;}

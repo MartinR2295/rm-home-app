@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AddProductPage } from './../add-product/add-product';
 
 @Component({
   selector: 'page-home',
@@ -8,14 +9,10 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   inputVal:string = ""
+  pushPage: any;
 
   constructor(public navCtrl: NavController) {
-
-  }
-
-  petar() {
-    console.log("here")
-    console.log(this.inputVal);
+    this.pushPage = AddProductPage;
   }
 
 }

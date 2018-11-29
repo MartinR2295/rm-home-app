@@ -9,6 +9,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { AddProductPage } from '../pages/add-product/add-product';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +17,9 @@ import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
+import { BaseProvider } from '../providers/base/base';
+import { ObjectProvider } from '../providers/object/object';
+import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { AuthProvider } from '../providers/auth/auth';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    AddProductPage
   ],
   imports: [
     BrowserModule,
@@ -40,14 +45,18 @@ import { AuthProvider } from '../providers/auth/auth';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    AddProductPage
   ],
   providers: [
     HTTP,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    BaseProvider,
+    ObjectProvider,
+    AlertHelperProvider
   ]
 })
 export class AppModule {}
