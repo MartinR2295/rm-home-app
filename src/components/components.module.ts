@@ -9,6 +9,10 @@ import { NormalTextLabelComponent } from './base/labels/normal-text-label/normal
 import { LightGrayLabelComponent } from './base/labels/light-gray-label/light-gray-label';
 import { HeaderLabelComponent } from './base/labels/header-label/header-label';
 import { BaseInputComponent } from './input/base-input/base-input';
+import { FormsModule } from '@angular/forms';
+import { DefaultInputComponent } from './input/default-input/default-input';
+import { TextIconInputComponent } from './input/text-icon-input/text-icon-input';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [BaseViewComponent,
@@ -19,8 +23,10 @@ import { BaseInputComponent } from './input/base-input/base-input';
     NormalTextLabelComponent,
     LightGrayLabelComponent,
     HeaderLabelComponent,
-    BaseInputComponent],
-	imports: [BrowserModule],
+    BaseInputComponent,
+    DefaultInputComponent,
+    TextIconInputComponent],
+	imports: [BrowserModule, FormsModule, IonicModule],
 	exports: [BaseViewComponent,
     BaseButtonComponent,
     DarkButtonComponent,
@@ -29,6 +35,8 @@ import { BaseInputComponent } from './input/base-input/base-input';
     NormalTextLabelComponent,
     LightGrayLabelComponent,
     HeaderLabelComponent,
-    BaseInputComponent]
+    BaseInputComponent,
+    DefaultInputComponent,
+    TextIconInputComponent]
 })
 export class ComponentsModule {}

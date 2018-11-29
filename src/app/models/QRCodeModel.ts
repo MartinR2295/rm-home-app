@@ -1,4 +1,5 @@
+import { BaseModel } from "./BaseModel";
 
-export class QRCodeModel {
+export class QRCodeModel extends BaseModel{
     codeString: string;
   }

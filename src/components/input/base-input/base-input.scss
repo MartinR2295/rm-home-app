@@ -1,3 +1,14 @@
 base-input {
-color: red;
+color: color($buttonColors, dark, base);
+width:100%;
+}
+
+base-input > input {
+    padding: 5px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    width: 100%;
+    font-size: 16px;
+    height: 40px;
 }

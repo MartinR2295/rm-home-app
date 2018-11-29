@@ -7,8 +7,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  inputVal:string = ""
+
   constructor(public navCtrl: NavController) {
 
+  }
+
+  petar() {
+    console.log("here")
+    console.log(this.inputVal);
   }
 
 }

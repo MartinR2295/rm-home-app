@@ -1,0 +1,32 @@
+text-icon-input {
+    width: 100%;
+    border-width: 1px;
+    border-color: color($buttonColors, dark, base);
+    border-style: solid;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+text-icon-input > .grid {
+    padding: 0px;
+}
+
+.text-icon-input-grid-col {
+    padding: 0px;
+}
+
+.flex-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-grid-col {
+    font-size: 25px;
+    color: color($buttonColors, light, base);
+    background-color: color($buttonColors, dark, base);
+}
+
+text-icon-input input {
+    border-width: 0px;
+}

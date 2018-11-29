@@ -1,5 +1,6 @@
 import { HTTP } from '@ionic-native/http';
 import { Injectable } from '@angular/core';
+import { BaseProvider } from '../base/base';
 
 /*
   Generated class for the ObjectProvider provider.
@@ -8,19 +9,15 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 
-const backpointURL = "rm-home.rmst.eu";
-
 @Injectable()
-export class ObjectProvider {
-
-  constructor(public http: HTTP) { }
+export class ObjectProvider extends BaseProvider {
 
   /** Calls a GET with passed data and options
    * @param data 
    * @param options optional
    */
   getObject(data, options = {}) {
-   return this.http.get(backpointURL, data, options)
+   return this.http.get(BaseProvider.backpointURL, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
@@ -36,7 +33,7 @@ export class ObjectProvider {
    * @param options 
    */
   deleteObject(data, options = {}) {
-   return this.http.delete(backpointURL, data, options)
+   return this.http.delete(BaseProvider.backpointURL, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
@@ -52,7 +49,7 @@ export class ObjectProvider {
    * @param options 
    */
   updateObject(data, options = {}) {
-   return this.http.put(backpointURL, data, options)
+   return this.http.put(BaseProvider.backpointURL, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
@@ -68,7 +65,7 @@ export class ObjectProvider {
    * @param options 
    */
   searchObject(data, options = {}) {
-    this.http.get(backpointURL, data, options)
+    this.http.get(BaseProvider.backpointURL, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
