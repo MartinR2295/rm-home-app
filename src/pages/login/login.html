@@ -23,7 +23,7 @@
     <text-icon-input [placeholder]="'Benutzername'" [(value)]="loginData.username" [icon]="'person'"></text-icon-input>
   </ion-row>
   <ion-row class="row-margin">
-    <text-icon-input [placeholder]="'Password'" [(value)]="loginData.password" [icon]="'key'"></text-icon-input>
+    <text-icon-input [type]="'password'" [placeholder]="'Password'" [(value)]="loginData.password" [icon]="'key'"></text-icon-input>
   </ion-row>
   <ion-row class="row-margin">
     <dark-button [text]="'Anmelden'" (click)="clickLogin()"></dark-button>
