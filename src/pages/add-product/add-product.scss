@@ -1,0 +1,61 @@
+page-add-product {
+    background-color: transparent;
+    text-align: center;
+    padding: 10px;
+}
+
+input { 
+    width: 100%;
+    height: 30px;
+}
+
+.normal-label { 
+    padding: 5px;
+}
+
+// .qrcode {
+// width: 87%;
+// }
+
+.object-name {
+}
+
+base-input {
+}
+
+dark-button > base-button > button {
+    width: 100%;
+    height: 3em;
+}
+
+#camera-icon {
+    font-size: 2.8em;
+    margin-left: 90%;
+    margin-right: 5px;
+    margin-top: -5px;
+    margin-bottom: 2px;
+    color: color($buttonColors, dark, base);
+}
+
+base-input.qrcode > div > normal-text-label {
+    padding-top: 10px;
+}
+
+
+.neger {
+    width: 100%;
+}
+
+.neger > base-input > input {
+    width: 88%;
+    float: left;
+}
+
+.neger > #camera-icon {
+    max-width: 10%;
+    display: flex;
+}
+
+.transparentBody {
+    background: none transparent !important;
+ }
