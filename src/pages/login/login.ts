@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginModel } from '../../app/models/LoginModel';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the LoginPage page.
@@ -28,5 +29,7 @@ export class LoginPage {
   clickLogin() {
     this.loginData.password = "TestPassw";
     this.loginData.username = "TestUsername";
+
+    this.navCtrl.push(TabsPage);
   }
 }
