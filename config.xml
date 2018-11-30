@@ -83,8 +83,11 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.1" />
+<<<<<<< HEAD
     <plugin name="cordova-plugin-qrscanner" spec="2.6.0" />
     <engine name="android" spec="7.1.4" />
+=======
+>>>>>>> dee652bc44d8efa17af8d107693a0d0af92b1f9d
     <engine name="ios" spec="4.5.5" />
     <engine name="browser" spec="5.0.4" />
 </widget>

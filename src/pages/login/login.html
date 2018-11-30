@@ -7,27 +7,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>LoginPage</ion-title>
+    <ion-title>RM-Home</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content padding style="background-color: rgb(80, 95, 112, 0.2);">
+<div >
 <ion-grid>
+    <div style=" background-color: rgb(80, 95, 112, 0.2); margin-top: 50%; padding: 20px;">
   <ion-row class="row-margin">
     <h2>Login</h2>
   </ion-row>
-  <ion-row class="row-margin">
+    <ion-row class="row-margin">
     <text-icon-input [placeholder]="'Benutzername'" [(value)]="loginData.username" [icon]="'person'"></text-icon-input>
   </ion-row>
   <ion-row class="row-margin">
-    <text-icon-input [placeholder]="'Password'" [(value)]="loginData.password" [icon]="'key'"></text-icon-input>
+    <text-icon-input [type]="'password'" [placeholder]="'Password'" [(value)]="loginData.password" [icon]="'key'"></text-icon-input>
   </ion-row>
   <ion-row class="row-margin">
     <dark-button [text]="'Anmelden'" (click)="clickLogin()"></dark-button>
   </ion-row>
+  </div>
 </ion-grid>
-
+</div>
 </ion-content>

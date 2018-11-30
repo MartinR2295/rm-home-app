@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseProvider } from '../base/base';
+import { LoginModel } from '../../app/models/LoginModel';
 
 /*
   Generated class for the AuthProvider provider.
@@ -14,15 +15,21 @@ export class AuthProvider extends BaseProvider {
    * @param data 
    * @param options optional
    */
-  getObject(data, options = {}) {
-    return this.http.post(BaseProvider.backpointURL+"/", data, options)
-     .then(res => {
-       console.log(res.data); // data received by server
-       return res;
-     })
-     .catch(error => {
-       console.log(error.error); // error message as string
-       return error;
-     });
-   }
+
+  getAuthToken(loginModel:LoginModel, callback) {
+    this.post(BaseProvider.backpointURL+"/auth", loginModel)
+    .then(res => {
+      callback(res.status, res);
+      console.log("then")
+      console.log(res.data); // data received by server
+      return res;
+    })
+    .catch(error => {
+      console.log(error.error); // error message as string
+      console.log("catch");
+      console.log(error);
+      callback(error.status, error);
+      return error;
+    });
+  }
 }

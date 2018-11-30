@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Alert } from 'ionic-angular';
 import { LoginModel } from '../../app/models/LoginModel';
 import { TabsPage } from '../tabs/tabs';
+import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
+import { AuthProvider } from '../../providers/auth/auth';
+import { HttpResponse } from '@angular/common/http';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,7 +22,7 @@ export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertHelper: AlertHelperProvider, public authProvider:AuthProvider) {
   }
 
   ionViewDidLoad() {
@@ -27,9 +30,16 @@ export class LoginPage {
   }
 
   clickLogin() {
-    this.loginData.password = "TestPassw";
-    this.loginData.username = "TestUsername";
-
-    this.navCtrl.push(TabsPage);
+    let that = this;
+    this.authProvider.getAuthToken(this.loginData, function(status:Number, response) {
+      if(status == 200) {
+        that.navCtrl.push(TabsPage);
+      } else {
+        console.error("credentials error");
+      }
+    });
+  }
+  showError(text:string) {
+    this.alertHelper.sendAlert("Error",text);
   }
 }
