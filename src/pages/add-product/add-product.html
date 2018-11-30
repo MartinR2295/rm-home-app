@@ -1,21 +1,21 @@
 <div>
-  <base-input
+  <default-input
   type="text"
   placeholder=" Object Name"
   label="Objekt Name"
   class="object-name"
-  value={{model.name}}
-  ></base-input>
+  [(value)]="model.name"
+  ></default-input>
   
   <div class="neger">
 
-    <base-input
+    <default-input
     type="text"
     placeholder=" objXXXXXXXXXXXXXX"
     label="QRCode"
     class="qrcode"
-    value="hi"
-    ></base-input> <ion-icon (click)="scan()" name="camera" id="camera-icon"></ion-icon>
+    [(value)]="qrcode.codeString"
+    ></default-input> <ion-icon (click)="scan()" name="camera" id="camera-icon"></ion-icon>
   </div>
   <br>
   <dark-button text="anlegen" (click)="addProduct()"></dark-button>

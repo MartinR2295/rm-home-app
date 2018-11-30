@@ -20,7 +20,7 @@ input {
 .object-name {
 }
 
-base-input {
+default-input {
 }
 
 dark-button > base-button > button {
@@ -37,7 +37,7 @@ dark-button > base-button > button {
     color: color($buttonColors, dark, base);
 }
 
-base-input.qrcode > div > normal-text-label {
+default-input.qrcode > base-input > div > normal-text-label {
     padding-top: 10px;
 }
 
@@ -46,7 +46,7 @@ base-input.qrcode > div > normal-text-label {
     width: 100%;
 }
 
-.neger > base-input > input {
+.neger > default-input > base-input > input {
     width: 88%;
     float: left;
 }
