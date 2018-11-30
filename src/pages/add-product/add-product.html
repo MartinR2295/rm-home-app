@@ -1,3 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Anlegen</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+<div>
+<ion-grid>
+    <div>
+    <ion-row class="row-margin">
+      <default-input
+      type="text"
+      placeholder=" Object Name"
+      label="Objekt Name"
+      class="object-name"
+      [(value)]="model.name"
+      ></default-input> 
+    </ion-row>
+    <ion-row>
+      <div class="neger">
+
+        <default-input
+        type="text"
+        placeholder=" objXXXXXXXXXXXXXX"
+        label="QRCode"
+        class="qrcode"
+        [(value)]="qrcode.codeString"
+        ></default-input> <ion-icon (click)="scan()" name="camera" id="camera-icon"></ion-icon>
+      </div>
+    </ion-row>
+    <ion-row>
+      <br> <br>
+      <dark-button text="anlegen" (click)="addProduct()"></dark-button>
+    </ion-row>
+  </div>
+</ion-grid>
+</div>
+</ion-content>
+<!-- 
 <div>
   <default-input
   type="text"
@@ -19,4 +61,4 @@
   </div>
   <br>
   <dark-button text="anlegen" (click)="addProduct()"></dark-button>
-</div>
+</div> -->

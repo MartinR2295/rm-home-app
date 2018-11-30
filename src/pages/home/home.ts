@@ -15,4 +15,7 @@ export class HomePage {
     this.pushPage = AddProductPage;
   }
 
+  petar() {
+    this.navCtrl.push(this.pushPage);
+  }
 }
