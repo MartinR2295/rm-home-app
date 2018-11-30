@@ -17,13 +17,10 @@ import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
-<<<<<<< HEAD
 import { BaseProvider } from '../providers/base/base';
 import { ObjectProvider } from '../providers/object/object';
-=======
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
->>>>>>> dee652bc44d8efa17af8d107693a0d0af92b1f9d
 import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
 
 @NgModule({
@@ -34,12 +31,9 @@ import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
     HomePage,
     TabsPage,
     LoginPage,
-<<<<<<< HEAD
-    AddProductPage
-=======
+    AddProductPage,
     SearchPage,
     SettingsPage
->>>>>>> dee652bc44d8efa17af8d107693a0d0af92b1f9d
   ],
   imports: [
     BrowserModule,
@@ -56,12 +50,9 @@ import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
     HomePage,
     TabsPage,
     LoginPage,
-<<<<<<< HEAD
-    AddProductPage
-=======
+    AddProductPage,
     SearchPage,
     SettingsPage
->>>>>>> dee652bc44d8efa17af8d107693a0d0af92b1f9d
   ],
   providers: [
     HTTP,
@@ -69,11 +60,8 @@ import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-<<<<<<< HEAD
     BaseProvider,
     ObjectProvider,
-=======
->>>>>>> dee652bc44d8efa17af8d107693a0d0af92b1f9d
     AlertHelperProvider
   ]
 })

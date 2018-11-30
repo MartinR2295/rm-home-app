@@ -10,11 +10,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class BaseProvider {
-<<<<<<< HEAD
-  static readonly backpointURL = "http://rm-home.rmst.eu";
-=======
   static readonly backpointURL = "https://rm-home.rmst.eu";
->>>>>>> dee652bc44d8efa17af8d107693a0d0af92b1f9d
   constructor(public http: HTTP) {}
 
   getHeaders() {
