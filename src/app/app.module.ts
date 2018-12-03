@@ -22,6 +22,7 @@ import { ObjectProvider } from '../providers/object/object';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
+import { SessionProvider } from '../providers/session/session';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
     AuthProvider,
     BaseProvider,
     ObjectProvider,
-    AlertHelperProvider
+    AlertHelperProvider,
+    SessionProvider
   ]
 })
 export class AppModule {}
