@@ -15,9 +15,10 @@ export class ObjectProvider extends BaseProvider {
   /** Calls a GET with passed data and options
    * @param data 
    * @param options optional
+   * @param route the route (eg. object)
    */
-  getObject(data, options = {}) {
-   return this.http.get(BaseProvider.backpointURL, data, options)
+  getObject(route, data, options = {}) {
+   return this.http.get(BaseProvider.backpointURL + `/${route}`, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
@@ -31,9 +32,10 @@ export class ObjectProvider extends BaseProvider {
   /** Calls a DELETE with passed data and options
    * @param data 
    * @param options 
+   * @param route the route (eg. object)
    */
-  deleteObject(data, options = {}) {
-   return this.http.delete(BaseProvider.backpointURL, data, options)
+  deleteObject(route, data, options = {}) {
+   return this.http.delete(BaseProvider.backpointURL + `/${route}`, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
@@ -44,12 +46,31 @@ export class ObjectProvider extends BaseProvider {
     });   
   }  
 
+  /** Calls a POST on passed data and options
+   * @param data 
+   * @param options 
+   * @param route the route (eg. object)
+   */
+  addObject(route, data, options = {}) {
+    console.log(BaseProvider.backpointURL + `/${route}`);
+   return this.http.post(BaseProvider.backpointURL + `/${route}`, data, options)
+    .then(res => {
+      console.log(res.data); // data received by server
+      return res;
+    })
+    .catch(error => {
+      console.log(error.error); // error message as string
+      return error;
+    });    
+  }
   /** Calls a UPDATE on passed data and options
    * @param data 
    * @param options 
+   * @param route the route (eg. object)
    */
-  updateObject(data, options = {}) {
-   return this.http.put(BaseProvider.backpointURL, data, options)
+  updateObject(route, data, options = {}) {
+    console.log(BaseProvider.backpointURL + `/${route}`);
+   return this.http.put(BaseProvider.backpointURL + `/${route}`, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
@@ -63,9 +84,10 @@ export class ObjectProvider extends BaseProvider {
   /** Search Query, calls GET with passed data and options
    * @param data 
    * @param options 
+   * @param route the route (eg. object)
    */
-  searchObject(data, options = {}) {
-    this.http.get(BaseProvider.backpointURL, data, options)
+  searchObject(route, data, options = {}) {
+    this.http.get(BaseProvider.backpointURL + `/${route}`, data, options)
     .then(res => {
       console.log(res.data); // data received by server
       return res;
@@ -80,7 +102,7 @@ export class ObjectProvider extends BaseProvider {
    * @param data 
    * @param options 
    */
-  getObjectStack(data, options) {
+  getObjectStack(route, data, options) {
     
   }  
 }

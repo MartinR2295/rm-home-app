@@ -7,6 +7,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { HttpResponse } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { RegisterModel } from '../../app/models/RegisterModel';
+import { SessionProvider } from '../../providers/session/session';
 
 /**
  * Generated class for the LoginPage page.
@@ -25,7 +26,11 @@ export class LoginPage {
   loginData:LoginModel = new LoginModel();
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertHelper: AlertHelperProvider, public authProvider:AuthProvider) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertHelper: AlertHelperProvider,
+    public authProvider:AuthProvider,
+    public session: SessionProvider) {
   }
 
   ionViewDidLoad() {
@@ -33,16 +38,11 @@ export class LoginPage {
   }
 
   clickLogin() {
-
-    //Start loading Animation
-
-    let that = this;
-    this.authProvider.getAuthToken(this.loginData, function(status:Number, response) {
-
-    //end loading Animation
-
+    this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
       if(status == 200) {
-        that.navCtrl.push(TabsPage);
+        this._saveToSession(response);
+        console.log(this.loginData, 'response: ', response);
+        this.navCtrl.push(TabsPage);
       } else {
         console.error("credentials error");
       }
@@ -55,5 +55,15 @@ export class LoginPage {
 
   showError(text:string) {
     this.alertHelper.sendAlert("Error",text);
+  }
+
+  /**
+   * Saves passed response from login to the session provider,
+   * making it available application wide
+   * @param data 
+   */
+  _saveToSession(data) {
+    this.session.setToken(JSON.parse(data.data).body);
+    this.session.setUser(JSON.parse(data.data).body.user);
   }
 }

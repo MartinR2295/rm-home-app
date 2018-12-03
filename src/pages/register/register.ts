@@ -29,6 +29,7 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
   clickButtonRegister(){
+    
       this.objProvider.post(this.objProvider.backpointURL +'/users',this.registerData);
   }
 

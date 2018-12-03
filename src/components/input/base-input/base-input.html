@@ -1,6 +1,6 @@
 <div *ngIf="label">
   <normal-text-label
-  text={{label}}>
+  [text]="label">
 </normal-text-label>
         <!-- <span style="color: red" *ngIf="isRequired">*</span> -->
 </div>
@@ -11,6 +11,7 @@
 [name]="name" 
 [placeholder]="placeholder" 
 [class]="class" 
-[disabled]="disabled"
-[(ngModel)] = "value"
-[required]="isRequired">
+[disabled]="disabled" 
+[(ngModel)]="value"
+[required]="isRequired"
+>
