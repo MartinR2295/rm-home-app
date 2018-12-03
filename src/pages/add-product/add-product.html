@@ -16,7 +16,7 @@
       placeholder=" Object Name"
       label="Objekt Name"
       class="object-name"
-      [(value)]="model.name"
+      [(value)]="model.object_name"
       ></default-input> 
     </ion-row>
     <ion-row>
@@ -27,12 +27,11 @@
         placeholder=" objXXXXXXXXXXXXXX"
         label="QRCode"
         class="qrcode"
-        [(value)]="qrcode.codeString"
+        [(value)]="model.qr_code_string"
         ></default-input> <ion-icon (click)="scan()" name="camera" id="camera-icon"></ion-icon>
       </div>
     </ion-row>
     <ion-row>
-      <br> <br>
       <dark-button text="anlegen" (click)="addProduct()"></dark-button>
     </ion-row>
   </div>

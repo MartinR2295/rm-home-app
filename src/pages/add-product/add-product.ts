@@ -4,7 +4,8 @@ import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { ObjectProvider } from '../../providers/object/object';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { SessionProvider } from '../../providers/session/session';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 /**
  * Generated class for the AddProductPage page.
  *
@@ -16,14 +17,19 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 @Component({
   selector: 'page-add-product',
   templateUrl: 'add-product.html',
-  providers: [QRScanner]
+  providers: [BarcodeScanner]
 })
 export class AddProductPage {
 
   model:RMHObjectModel = new RMHObjectModel();
   qrcode:QRCodeModel = new QRCodeModel();
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alert: AlertHelperProvider, private qrScanner: QRScanner, private objp: ObjectProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private alert: AlertHelperProvider, 
+    private barcodeScanner: BarcodeScanner,
+    private objp: ObjectProvider,
+    public session: SessionProvider) {
   }
 
   ngOnInit() {
@@ -39,11 +45,9 @@ export class AddProductPage {
     let message: string;
     let title: string = 'SUCCESS';
 
-    console.log('spast', this.model);
-    
-    this.objp.addObject('objects', this.model).then(data => {
-      console.log(data);
-      message = `Your object with the name ${this.model.name} and the qrcode ${this.model.qrCode.codeString} was added`;
+    console.log(this.objp.getHeaders());
+    this.objp.addObject('objects', this.model, this.objp.getHeaders()).then(data => {
+      message = `Your object with the name ${this.model.object_name} and the qrcode ${this.model.qr_code_string} was added`;
     })
     .catch(error => {
       message = `An error has happened: ${error}`;
@@ -57,32 +61,39 @@ export class AddProductPage {
 
   scan() {
 
-    this.qrScanner.prepare()
-    .then((status: QRScannerStatus) => {
-      if (status.authorized) {
-        // camera permission was granted
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+          this.model.qr_code_string = barcodeData.text;
+     }).catch(err => {
+         console.log('Error', err);
+     });
 
-        this.qrScanner.show()
-        window.document.querySelector('ion-app').classList.add('cameraView');
+    // this.qrScanner.prepare()
+    // .then((status: QRScannerStatus) => {
+    //   if (status.authorized) {
+    //     // camera permission was granted
 
-        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+    //     this.qrScanner.show()
+    //     window.document.querySelector('ion-app').classList.add('cameraView');
 
-          console.log('Scanned something', text);
-          this.qrcode.codeString = text;
-          window.document.querySelector('ion-app').classList.remove('cameraView');
-          this.qrScanner.hide(); // hide camera preview
+    //     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
 
-          scanSub.unsubscribe(); // stop scanning
-        });
+    //       console.log('Scanned something', text);
+    //       this.qrcode.codeString = text;
+    //       window.document.querySelector('ion-app').classList.remove('cameraView');
+    //       this.qrScanner.hide(); // hide camera preview
+
+    //       scanSub.unsubscribe(); // stop scanning
+    //     });
 
 
-      } else if (status.denied) {
-        // camera permission was permanently denied
-      } else {
-        // permission was denied, but not permanently. You can ask for permission again at a later time.
-      }
-    })
-    .catch((e: any) => console.log('Error is', e));
+    //   } else if (status.denied) {
+    //     // camera permission was permanently denied
+    //   } else {
+    //     // permission was denied, but not permanently. You can ask for permission again at a later time.
+    //   }
+    // })
+    // .catch((e: any) => console.log('Error is', e));
 
   }
 
