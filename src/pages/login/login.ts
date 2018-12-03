@@ -5,6 +5,8 @@ import { TabsPage } from '../tabs/tabs';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HttpResponse } from '@angular/common/http';
+import { RegisterPage } from '../register/register';
+import { RegisterModel } from '../../app/models/RegisterModel';
 
 /**
  * Generated class for the LoginPage page.
@@ -21,6 +23,7 @@ import { HttpResponse } from '@angular/common/http';
 export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertHelper: AlertHelperProvider, public authProvider:AuthProvider) {
   }
@@ -30,8 +33,14 @@ export class LoginPage {
   }
 
   clickLogin() {
+
+    //Start loading Animation
+
     let that = this;
     this.authProvider.getAuthToken(this.loginData, function(status:Number, response) {
+
+    //end loading Animation
+
       if(status == 200) {
         that.navCtrl.push(TabsPage);
       } else {
@@ -39,6 +48,11 @@ export class LoginPage {
       }
     });
   }
+
+  clickRegister(){
+    this.navCtrl.push(RegisterPage);
+  }
+
   showError(text:string) {
     this.alertHelper.sendAlert("Error",text);
   }

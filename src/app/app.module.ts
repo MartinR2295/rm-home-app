@@ -19,6 +19,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
+import { RegisterPage } from '../pages/register/register';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
     TabsPage,
     LoginPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
     TabsPage,
     LoginPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   providers: [
     HTTP,

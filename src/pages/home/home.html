@@ -4,32 +4,28 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="background-color">
 <ion-grid>
   <ion-row>
     <h2>Welcome to Ionic!</h2>
   </ion-row>
-  <ion-row>
-    <base-button text="base Button"></base-button>
-  </ion-row>
-  <ion-row>
-    <dark-button text="darkButton" (click)="petar()"></dark-button>
-  </ion-row>
-  <ion-row>
-    <light-button text="lightButton"></light-button>
-  </ion-row>
-  <ion-row>
-    <default-input [placeholder]="'Machen Sie Ihre Eingabe!'" [(value)]="inputVal"></default-input>
-  </ion-row>
-  <ion-row>
-    <h2>InputWithIcon</h2>
-  </ion-row>
-  <ion-row>
-    <text-icon-input [placeholder]="'Machen Sie Ihre Eingabe!'" [(value)]="inputVal" [icon]="'person'"></text-icon-input>
-  </ion-row>
-  <menu-card></menu-card>
-  <ion-row>
-    {{inputVal}}
-  </ion-row>
+  <ion-card>
+          <ion-icon name="repeat"></ion-icon>
+    <ion-card-content></ion-card-content>
+      <ion-row style="text-align: center;">
+          Objekt Verschieben
+        </ion-row>
+  </ion-card>
+  <menu-card>
+      <ion-row style="text-align: center;">
+          Objekt Verschieben
+        </ion-row>
+  </menu-card>
+  <menu-card>
+    <ion-row style="text-align: center;">
+      Objekt herausnehmen
+    </ion-row>
+  </menu-card>
+  
 </ion-grid>
 </ion-content>
