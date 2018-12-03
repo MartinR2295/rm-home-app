@@ -47,8 +47,7 @@ export class AddProductPage {
 
     console.log(this.objp.getHeaders());
     this.objp.addObject('objects', this.model, this.objp.getHeaders()).then(data => {
-      console.log(this.session.authenticated);
-      message = `Your object with the name ${this.model.name} and the qrcode ${this.model.qrCode.codeString} was added`;
+      message = `Your object with the name ${this.model.object_name} and the qrcode ${this.model.qr_code_string} was added`;
     })
     .catch(error => {
       message = `An error has happened: ${error}`;
@@ -64,7 +63,7 @@ export class AddProductPage {
 
     this.barcodeScanner.scan().then(barcodeData => {
       console.log('Barcode data', barcodeData);
-          this.qrcode.codeString = barcodeData.text;
+          this.model.qr_code_string = barcodeData.text;
      }).catch(err => {
          console.log('Error', err);
      });

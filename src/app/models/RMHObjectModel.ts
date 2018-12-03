@@ -4,7 +4,8 @@ import { ObjectProvider } from "./../../providers/object/object";
 
 export class RMHObjectModel extends BaseModel {
 
-  public name: string;
+  public object_name: string;
+  public qr_code_string: string;
   public qrCode: QRCodeModel;
   public disposed: boolean;
   public borrowed: boolean;
