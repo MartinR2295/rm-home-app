@@ -20,20 +20,27 @@
         <h2>Registrieren</h2>
       </ion-row>
         <ion-row class="row-margin">
-        <text-icon-input [placeholder]="'Benutzername'" [(value)]="registerData.username" [icon]="'person'"></text-icon-input>
+        <text-icon-input [placeholder]="'Benutzername'" [(value)]="registerData.user_username" [icon]="'person'"></text-icon-input>
       </ion-row>
       <ion-row class="row-margin">
-          <text-icon-input [placeholder]="'E-Mail'" [(value)]="registerData.email" [icon]="'mail'"></text-icon-input>
+          <text-icon-input [placeholder]="'E-Mail'" [(value)]="registerData.user_email" [icon]="'mail'"></text-icon-input>
         </ion-row>
       <ion-row class="row-margin">
-        <text-icon-input [type]="'password'" [placeholder]="'Passwort'" [(value)]="registerData.password" [icon]="'key'"></text-icon-input>
+        <text-icon-input [type]="'password'" [placeholder]="'Passwort'" [(value)]="registerData.user_password" [icon]="'key'"></text-icon-input>
       </ion-row>
       <ion-row class="row-margin">
-          <text-icon-input [type]="'password'" [placeholder]="'Passwort wiederholen'" [(value)]="registerData.passwordWh" [icon]="'key'"></text-icon-input>
+          <text-icon-input [type]="'password'" [placeholder]="'Passwort wiederholen'" [(value)]="passwordWh" [icon]="'key'"></text-icon-input>
         </ion-row>
       <ion-row class="row-margin">
           <dark-button [text]="'Registrieren'" (click)="clickButtonRegister()"></dark-button>
         </ion-row>
+
+        <div *ngFor="let error of errorMessage">
+          <span style="color:red;font-size: small;">
+            {{error}}
+          </span>
+          <br>
+        </div>
       </div>
 </ion-grid>
 </ion-content>

@@ -24,7 +24,7 @@ import { SessionProvider } from '../../providers/session/session';
 export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
-  
+  errorMessage:any = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -44,6 +44,8 @@ export class LoginPage {
         console.log(this.loginData, 'response: ', response);
         this.navCtrl.push(TabsPage);
       } else {
+        this.errorMessage = JSON.parse(error.error).error.message
+        this.errorMessage("Benutzername oder Passwort falsch")
         console.error("credentials error");
       }
     });

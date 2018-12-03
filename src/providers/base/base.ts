@@ -11,7 +11,7 @@ import { SessionProvider } from '../session/session';
 
 @Injectable()
 export class BaseProvider {
-  public readonly backpointURL = "https://rm-home.rmst.eu";
+  static readonly backpointURL = "https://rm-home.rmst.eu";
   constructor(public http: HTTP, public session: SessionProvider) {}
 
   getHeaders() {
