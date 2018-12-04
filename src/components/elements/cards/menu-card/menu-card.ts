@@ -14,5 +14,4 @@ import { BaseViewComponent } from '../../../base/base-view/base-view';
 export class MenuCardComponent extends BaseViewComponent {
   @Input() icon:any;
   @Input() text:any;
-  @Input() link:any;
 }

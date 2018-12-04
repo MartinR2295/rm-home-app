@@ -1,4 +1,4 @@
-menu-card .card-ios {
+/*menu-card .card-ios {
     margin: 0px;
     width: 100%;
     background-color: hsla(0, 0%, 39%, 0.171);
@@ -13,6 +13,44 @@ menu-card ion-icon {
     font-size: 30px;
 }
 
-menu-card .text-row {
-    text-align: center;
+.text-row{
+    p{
+        margin: auto;
+    }
+}
+
+ion-card{
+    border-radius: 8px !important;
+}
+*/
+menu-card {
+    
+    ion-card{
+        border-radius: 8px !important;
+    }
+    .card-md {
+        background-color: color($colors, primary, base);
+    }
+
+    .card-ios{
+        margin: 0px;
+        width: 100%;
+        background-color: hsla(0, 0%, 42%, 0.171);
+        border-radius: 8px;
+        font-size: 16px;
+        color: color($buttonColors, dark, base);
+    }
+    ion-icon {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        color: color($colors, primaryTitle, base);
+        padding-bottom: 5%;
+    }
+    .text-row{
+        p{
+            margin: auto;
+            color: color($colors, primaryTitle, base);
+        }
+    }
 }
