@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseViewComponent } from '../../../base/base-view/base-view';
 
 /**
@@ -12,5 +12,7 @@ import { BaseViewComponent } from '../../../base/base-view/base-view';
   templateUrl: 'menu-card.html'
 })
 export class MenuCardComponent extends BaseViewComponent {
-
+  @Input() icon:any;
+  @Input() text:any;
+  @Input() link:any;
 }

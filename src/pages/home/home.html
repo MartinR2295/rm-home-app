@@ -9,27 +9,13 @@
   <ion-row>
     <h2>Welcome to RM HOME!</h2>
   </ion-row>
-  <!-- <ion-row>
-    <base-button text="base Button"></base-button>
-  </ion-row> -->
+
   <ion-row>
-    <dark-button text="ANLEGEN" (click)="petar()"></dark-button>
-  </ion-row>
-  <!-- <ion-row>
-    <light-button text="lightButton"></light-button>
+    <ion-col> <menu-card [icon]="'add-circle-outline'" (click)="push('add');" [text]="'Objekt hinzufügen'"></menu-card> </ion-col>
   </ion-row>
   <ion-row>
-    <default-input [placeholder]="'Machen Sie Ihre Eingabe!'" [(value)]="inputVal"></default-input>
+    <ion-col> <menu-card [icon]="'search'" (click)="push('search');" [text]="'Objekt suchen'"></menu-card> </ion-col>
   </ion-row>
-  <ion-row>
-    <h2>InputWithIcon</h2>
-  </ion-row>
-  <ion-row>
-    <text-icon-input [placeholder]="'Machen Sie Ihre Eingabe!'" [(value)]="inputVal" [icon]="'person'"></text-icon-input>
-  </ion-row>
-  <menu-card></menu-card>
-  <ion-row>
-    {{inputVal}}
-  </ion-row> -->
+  
 </ion-grid>
 </ion-content>
