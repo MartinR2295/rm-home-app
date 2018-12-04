@@ -10,7 +10,7 @@
 <ion-header>
 
     <ion-navbar>
-      <ion-title>Suche</ion-title>
+      <ion-title>Objektsuche</ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -19,9 +19,15 @@
   <div >
   <ion-grid>
       <div>
-      <ion-row class="row-margin">
+      <ion-searchbar>
+          [(ngModel)]="myInput"
+          [showCancelButton]="shouldShowCancel"
+          (ionInput)="onInput($event)"
+          (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+      <!-- <ion-row class="row-margin">
        <text-icon-input [placeholder]="'Objekt'" [icon]="'search'"></text-icon-input> 
-      </ion-row>
+      </ion-row> -->
     </div>
   </ion-grid>
   </div>

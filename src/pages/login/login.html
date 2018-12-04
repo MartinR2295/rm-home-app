@@ -25,9 +25,18 @@
   <ion-row class="row-margin">
     <text-icon-input [type]="'password'" [placeholder]="'Password'" [(value)]="loginData.password" [icon]="'key'"></text-icon-input>
   </ion-row>
+
   <ion-row class="row-margin">
     <dark-button [text]="'Anmelden'" (click)="clickLogin()"></dark-button>
   </ion-row>
+  <ion-row class="row-margin">
+      <dark-button [text]="'Registrieren'" (click)="clickRegister()"></dark-button>
+    </ion-row>
+    <!-- <div *ngFor="let error of errorMessage">
+        <span style="color:red;font-size: small;">
+          {{error}}
+        </span>
+  <br> -->
   </div>
 </ion-grid>
 </div>

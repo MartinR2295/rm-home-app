@@ -22,6 +22,7 @@ import { ObjectProvider } from '../providers/object/object';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
+import { RegisterPage } from '../pages/register/register';
 import { SessionProvider } from '../providers/session/session';
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SessionProvider } from '../providers/session/session';
     LoginPage,
     AddProductPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { SessionProvider } from '../providers/session/session';
     LoginPage,
     AddProductPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   providers: [
     HTTP,

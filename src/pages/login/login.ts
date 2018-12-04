@@ -5,6 +5,8 @@ import { TabsPage } from '../tabs/tabs';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HttpResponse } from '@angular/common/http';
+import { RegisterPage } from '../register/register';
+import { RegisterModel } from '../../app/models/RegisterModel';
 import { SessionProvider } from '../../providers/session/session';
 
 /**
@@ -22,6 +24,7 @@ import { SessionProvider } from '../../providers/session/session';
 export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
+  errorMessage:any = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,10 +44,16 @@ export class LoginPage {
         console.log(this.loginData, 'response: ', response);
         this.navCtrl.push(TabsPage);
       } else {
+        this.errorMessage("Benutzername oder Passwort falsch")
         console.error("credentials error");
       }
     });
   }
+
+  clickRegister(){
+    this.navCtrl.push(RegisterPage);
+  }
+
   showError(text:string) {
     this.alertHelper.sendAlert("Error",text);
   }
