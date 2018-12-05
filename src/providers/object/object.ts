@@ -86,16 +86,16 @@ export class ObjectProvider extends BaseProvider {
    * @param options 
    * @param route the route (eg. object)
    */
-  searchObject(route, data, options = {}) {
-    this.http.get(BaseProvider.backpointURL + `/${route}`, data, options)
-    .then(res => {
-      console.log(res.data); // data received by server
-      return res;
-    })
-    .catch(error => {
-      console.log(error.error); // error message as string
-      return error;
-    });    
+  searchObject(route) {
+    return this.http.get(BaseProvider.backpointURL + `/${route}`,null,this.getHeaders())
+    // .then(res => {
+    //   console.log(res.data); // data received by server
+    //   return JSON.parse(res.data);
+    // })
+    // .catch(error => {
+    //   console.log(error.error); // error message as string
+    //   return error;
+    // });    
   }
 
   /** gets the object stack

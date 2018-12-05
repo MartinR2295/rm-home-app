@@ -7,6 +7,8 @@ import { LoginPage } from '../login/login';
 import { ObjectProvider } from '../../providers/object/object';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
+import { LoginModel } from '../../app/models/LoginModel';
+import { SessionProvider } from '../../providers/session/session';
 
 /**
  * Generated class for the RegisterPage page.
@@ -24,9 +26,9 @@ export class RegisterPage {
 
   passwordWh:string;
   registerData:RegisterModel = new RegisterModel();
-  errorMessage:any = [];
+  errorMessages:any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertHelper: AlertHelperProvider, public authProvider:AuthProvider, public objProvider: ObjectProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertHelper: AlertHelperProvider, public authProvider:AuthProvider, public objProvider: ObjectProvider, public session: SessionProvider) {
   }
 
   ionViewDidLoad() {
@@ -37,27 +39,45 @@ export class RegisterPage {
    * Function für die Registrierung eines neuen Benutzers
    */
   clickButtonRegister(){
+    let loginModel = new LoginModel();
+    loginModel.username = this.registerData.user_username
+    loginModel.password = this.registerData.user_password
+
     if(this.registerData.user_password == this.passwordWh){
-      this.errorMessage = null;
+      this.errorMessages = null;
       this.objProvider.post('https://rm-home.rmst.eu/users',this.registerData)
       .then((result) => {
         console.log("success");
           this.alertHelper.sendAlert("Registriert","Sie wurden erfolgreich Registriert",[{text: "Ok", handler: () => {
-          this.navCtrl.push(TabsPage);
+            this.authProvider.getAuthToken(loginModel, (status: Number, response) => {
+              if(status == 200) {
+                this._saveToSession(response);
+                console.log(loginModel, 'response: ', response);
+                this.navCtrl.push(TabsPage);
+              } 
+            }); 
         }}]);
-
       })
       .catch((error) => {
-      this.errorMessage = JSON.parse(error.error).error.message;
+      this.errorMessages = JSON.parse(error.error).error.message;
        console.log(JSON.parse(error.error).error.message);
        
       });
     }
     else
     {
-      this.errorMessage.push("Passwörter müssen übereinstimmen!");
+      this.errorMessages.push("Passwörter müssen übereinstimmen!");
     }
      
 }
+  /**
+   * Saves passed response from login to the session provider,
+   * making it available application wide
+   * @param data 
+   */
+  _saveToSession(data) {
+    this.session.setToken(JSON.parse(data.data).body);
+    this.session.setUser(JSON.parse(data.data).body.user);
+  }
 
 }
