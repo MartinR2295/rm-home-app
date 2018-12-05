@@ -44,7 +44,6 @@ export class LoginPage {
         console.log(this.loginData, 'response: ', response);
         this.navCtrl.push(TabsPage);
       } else {
-        this.errorMessage = JSON.parse(error.error).error.message
         this.errorMessage("Benutzername oder Passwort falsch")
         console.error("credentials error");
       }
