@@ -56,6 +56,8 @@ export class LoginPage {
    */
   _saveToSession(data) {
     this.session.saveSession(JSON.parse(data.data).body);
+    this.session.setNeger('aaaa');
+    this.session.setAuthenticated(JSON.parse(data.data).body);
     this.session.setUser(JSON.parse(data.data).body.user);
   }
 }

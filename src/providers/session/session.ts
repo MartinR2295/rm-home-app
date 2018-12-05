@@ -10,12 +10,13 @@ import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage
 */
 @Injectable()
 export class SessionProvider {
+  public neger: any;
 
  public user:LoginModel = new LoginModel();
   public isAuthenticated:Boolean = false;
   public authenticated: any;
 
-  constructor(private secureStorage: SecureStorage) {
+  constructor(public secureStorage: SecureStorage) {
   }
 
 
@@ -44,6 +45,7 @@ export class SessionProvider {
   return  this.secureStorage.create('session').then((storage: SecureStorageObject) => {
       return storage.get('authenticated').then((authenticated: string) => {
        this.authenticated = JSON.parse(authenticated);
+       console.log('1', this.authenticated);
        storage.get('user').then((user: string) => {
         this.user = JSON.parse(user);
        })
@@ -51,6 +53,7 @@ export class SessionProvider {
        return true;
      })
      .catch((error) => {
+       console.log('error inside restore funktion', error);
        return false;
      })
  
@@ -61,11 +64,27 @@ export class SessionProvider {
     this.user = user;
   }
 
+  setAuthenticated(sessionData) {
+    this.authenticated = {
+      token: sessionData.token,
+      refreshToken: sessionData.refresh_token,
+    };
+    console.log('set authenticated to', this.authenticated);
+  }
+
   getToken() {
     console.log('getToken', this.authenticated);
     return this.authenticated;
   }
 
+  setNeger(data) {
+    console.log('set neger to', data);
+    this.neger = data;
+  }
+
+  getNeger() {
+    return this.neger;
+  }
   logout() {
     this.secureStorage.create('session').then((storage: SecureStorageObject) => {
       storage.clear();

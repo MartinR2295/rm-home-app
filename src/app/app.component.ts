@@ -16,7 +16,7 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, session: SessionProvider) {
     platform.ready().then(() => {
-       session.restore().then((isAuthenticated: Boolean) => {
+     session.restore().then((isAuthenticated: Boolean) => {
         if (isAuthenticated) {
           this.rootPage = TabsPage;
         } else {
