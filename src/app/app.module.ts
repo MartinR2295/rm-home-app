@@ -22,8 +22,10 @@ import { ObjectProvider } from '../providers/object/object';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
+import { RegisterPage } from '../pages/register/register';
 import { SessionProvider } from '../providers/session/session';
 import { SecureStorage } from '@ionic-native/secure-storage';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { SecureStorage } from '@ionic-native/secure-storage';
     LoginPage,
     AddProductPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { SecureStorage } from '@ionic-native/secure-storage';
     LoginPage,
     AddProductPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    RegisterPage
   ],
   providers: [
     HTTP,
@@ -66,7 +70,8 @@ import { SecureStorage } from '@ionic-native/secure-storage';
     ObjectProvider,
     AlertHelperProvider,
     SessionProvider,
-    SecureStorage
+    SecureStorage,
+    SpinnerDialog
   ]
 })
 export class AppModule {}

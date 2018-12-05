@@ -1,8 +1,13 @@
 page-login {
 
-}
+    .row-margin {
+        margin-bottom: 10px;
+    }
 
-.row-margin {
-    margin-bottom: 10px;
+    .error-message {
+        color:red; 
+        font-size: small;
+    }
+
 }
 

@@ -24,7 +24,7 @@ export class AlertHelperProvider {
    * @param body 
    * @param buttons 
    */
-  sendAlert(title, body, buttons = ['OK']) {
+  sendAlert(title, body, buttons:any = ['OK']) {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: body,

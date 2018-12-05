@@ -1,3 +1,20 @@
 page-search {
-
+    .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    .text-box {
+        border-bottom: 0.07em solid #505F70; 
+        height: 20px; 
+        width: 300px; 
+        margin-left: 10px; 
+        color: color($buttonColors, dark, base);
+    }
+    .text-box-lowerText
+    {
+        color: map-get($colors, secondary);
+        font-size: 80%; 
+        font-weight: bold;
+    }
 }

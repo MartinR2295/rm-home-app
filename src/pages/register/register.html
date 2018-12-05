@@ -1,0 +1,47 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>RM-Home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color: rgb(80, 95, 112, 0.2);">
+<ion-grid>
+    <div style=" background-color: rgb(80, 95, 112, 0.2); margin-top: 50%; padding: 20px;">
+    <ion-row class="row-margin">
+        <h2>Registrieren</h2>
+      </ion-row>
+        <ion-row class="row-margin">
+        <text-icon-input [placeholder]="'Benutzername'" [(value)]="registerData.user_username" [icon]="'person'"></text-icon-input>
+      </ion-row>
+      <ion-row class="row-margin">
+          <text-icon-input [placeholder]="'E-Mail'" [(value)]="registerData.user_email" [icon]="'mail'"></text-icon-input>
+        </ion-row>
+      <ion-row class="row-margin">
+        <text-icon-input [type]="'password'" [placeholder]="'Passwort'" [(value)]="registerData.user_password" [icon]="'key'"></text-icon-input>
+      </ion-row>
+      <ion-row class="row-margin">
+          <text-icon-input [type]="'password'" [placeholder]="'Passwort wiederholen'" [(value)]="passwordWh" [icon]="'key'"></text-icon-input>
+        </ion-row>
+      <ion-row class="row-margin">
+          <dark-button [text]="'Registrieren'" (click)="clickButtonRegister()"></dark-button>
+        </ion-row>
+
+        <div *ngFor="let error of errorMessages">
+          <span style="color:red;font-size: small;">
+            {{error}}
+          </span>
+          <br>
+        </div>
+      </div>
+</ion-grid>
+</ion-content>
+

@@ -5,7 +5,10 @@ import { TabsPage } from '../tabs/tabs';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HttpResponse } from '@angular/common/http';
+import { RegisterPage } from '../register/register';
+import { RegisterModel } from '../../app/models/RegisterModel';
 import { SessionProvider } from '../../providers/session/session';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 /**
  * Generated class for the LoginPage page.
@@ -22,12 +25,14 @@ import { SessionProvider } from '../../providers/session/session';
 export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
+  errorMessages:any = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public alertHelper: AlertHelperProvider,
     public authProvider:AuthProvider,
-    public session: SessionProvider) {
+    public session: SessionProvider,
+    private spinnerDialog: SpinnerDialog) {
   }
 
   ionViewDidLoad() {
@@ -35,16 +40,25 @@ export class LoginPage {
   }
 
   clickLogin() {
+    this.spinnerDialog.show();
     this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
+      this.spinnerDialog.hide();
       if(status == 200) {
+        this.errorMessages = null;
         this._saveToSession(response);
         console.log(this.loginData, 'response: ', response);
         this.navCtrl.push(TabsPage);
       } else {
-        console.error("credentials error");
+        console.log(response.error);
+        this.errorMessages.push(JSON.parse(response.error).error.message);
       }
     });
   }
+
+  clickRegister(){
+    this.navCtrl.push(RegisterPage);
+  }
+
   showError(text:string) {
     this.alertHelper.sendAlert("Error",text);
   }
