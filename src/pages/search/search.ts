@@ -45,6 +45,9 @@ export class SearchPage {
         this.items.push(element);
       });
       
+    }).catch(error => {
+        console.log(error.error); // error message as string
+        return error;
     });
   }
 }

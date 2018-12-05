@@ -12,13 +12,13 @@ import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage
 export class SessionProvider {
   public neger: any;
 
- public user:LoginModel = new LoginModel();
+  public user:LoginModel = new LoginModel();
   public isAuthenticated:Boolean = false;
   public authenticated: any;
 
   constructor(public secureStorage: SecureStorage) {
+    this.restore();
   }
-
 
   /**
    * Saves the session
