@@ -25,7 +25,7 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
-  errorMessage:any = [];
+  errorMessages:any = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -44,14 +44,13 @@ export class LoginPage {
     this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
       this.spinnerDialog.hide();
       if(status == 200) {
+        this.errorMessages = null;
         this._saveToSession(response);
         console.log(this.loginData, 'response: ', response);
-        //this.navCtrl.push(TabsPage);
+        this.navCtrl.push(TabsPage);
       } else {
-        
-        //this.errorMessage = JSON.parse(this.errorMessage).error.message
-        this.errorMessage.push("Benutzername oder Passwort falsch")
-        console.error("credentials error");
+        console.log(response.error);
+        this.errorMessages.push(JSON.parse(response.error).error.message);
       }
     });
   }

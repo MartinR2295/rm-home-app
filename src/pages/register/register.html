@@ -35,7 +35,7 @@
           <dark-button [text]="'Registrieren'" (click)="clickButtonRegister()"></dark-button>
         </ion-row>
 
-        <div *ngFor="let error of errorMessage">
+        <div *ngFor="let error of errorMessages">
           <span style="color:red;font-size: small;">
             {{error}}
           </span>
