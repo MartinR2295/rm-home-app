@@ -23,6 +23,7 @@ import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
 import { SessionProvider } from '../providers/session/session';
+import { SecureStorage } from '@ionic-native/secure-storage';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { SessionProvider } from '../providers/session/session';
     IonicModule.forRoot(MyApp),
     ComponentsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,7 +65,8 @@ import { SessionProvider } from '../providers/session/session';
     BaseProvider,
     ObjectProvider,
     AlertHelperProvider,
-    SessionProvider
+    SessionProvider,
+    SecureStorage
   ]
 })
 export class AppModule {}

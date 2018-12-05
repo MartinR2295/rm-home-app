@@ -55,7 +55,7 @@ export class LoginPage {
    * @param data 
    */
   _saveToSession(data) {
-    this.session.setToken(JSON.parse(data.data).body);
+    this.session.saveSession(JSON.parse(data.data).body);
     this.session.setUser(JSON.parse(data.data).body.user);
   }
 }

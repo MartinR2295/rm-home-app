@@ -4,7 +4,6 @@ import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { ObjectProvider } from '../../providers/object/object';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
-import { SessionProvider } from '../../providers/session/session';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 /**
  * Generated class for the AddProductPage page.
@@ -28,8 +27,7 @@ export class AddProductPage {
     public navParams: NavParams, 
     private alert: AlertHelperProvider, 
     private barcodeScanner: BarcodeScanner,
-    private objp: ObjectProvider,
-    public session: SessionProvider) {
+    private objp: ObjectProvider) {
   }
 
   ngOnInit() {
@@ -50,7 +48,7 @@ export class AddProductPage {
       message = `Your object with the name ${this.model.object_name} and the qrcode ${this.model.qr_code_string} was added`;
     })
     .catch(error => {
-      message = `An error has happened: ${error}`;
+      message = `An error has happened: ${error.message}`;
       title = 'ERROR';
     })
     .then(() => {
