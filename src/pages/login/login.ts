@@ -8,6 +8,7 @@ import { HttpResponse } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { RegisterModel } from '../../app/models/RegisterModel';
 import { SessionProvider } from '../../providers/session/session';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 /**
  * Generated class for the LoginPage page.
@@ -30,7 +31,8 @@ export class LoginPage {
     public navParams: NavParams,
     public alertHelper: AlertHelperProvider,
     public authProvider:AuthProvider,
-    public session: SessionProvider) {
+    public session: SessionProvider,
+    private spinnerDialog: SpinnerDialog) {
   }
 
   ionViewDidLoad() {
@@ -38,14 +40,17 @@ export class LoginPage {
   }
 
   clickLogin() {
+    this.spinnerDialog.show();
     this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
+      this.spinnerDialog.hide();
       if(status == 200) {
         this._saveToSession(response);
         console.log(this.loginData, 'response: ', response);
-        this.navCtrl.push(TabsPage);
+        //this.navCtrl.push(TabsPage);
       } else {
-        this.errorMessage = JSON.parse(error.error).error.message
-        this.errorMessage("Benutzername oder Passwort falsch")
+        
+        //this.errorMessage = JSON.parse(this.errorMessage).error.message
+        this.errorMessage.push("Benutzername oder Passwort falsch")
         console.error("credentials error");
       }
     });
