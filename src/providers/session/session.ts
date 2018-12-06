@@ -14,8 +14,10 @@ export class SessionProvider {
   public user:LoginModel = new LoginModel();
   public isAuthenticated:Boolean = false;
   public authenticated: any;
+  public secureStorage: SecureStorage = new SecureStorage();
 
-  constructor(public secureStorage: SecureStorage) {
+  constructor() {
+    console.log("constructor of session.ts")
     this.restore();
   }
 
@@ -72,7 +74,7 @@ export class SessionProvider {
   }
 
   getToken() {
-    console.log('getToken', this.authenticated);
+    console.log('getToken diggih', this.authenticated);
     return this.authenticated;
   }
   logout() {

@@ -14,10 +14,13 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   rootPage:any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, session: SessionProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public session: SessionProvider) {
+    console.log("constructor of app.component.ts")
     platform.ready().then(() => {
-     session.restore().then((isAuthenticated: Boolean) => {
-        console.log("token: ", session.getToken().token)
+      console.log("platform ready of app.component.ts")
+     this.session.restore().then((isAuthenticated: Boolean) => {
+      console.log("then of app.component.ts")
+        console.log("token: ", this.session.getToken().token)
         if (isAuthenticated) {
           this.rootPage = TabsPage;
         } else {
