@@ -1,5 +1,9 @@
 page-home {
-
+    ion-header {
+        ion-icon {
+            color: color($colors, primaryTitle, base);
+        }
+    }
 }
 
 .background-color{

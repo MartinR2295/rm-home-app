@@ -24,6 +24,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AlertHelperProvider } from '../providers/alert-helper/alert-helper';
 import { RegisterPage } from '../pages/register/register';
 import { SessionProvider } from '../providers/session/session';
+import { SecureStorage } from '@ionic-native/secure-storage';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { SessionProvider } from '../providers/session/session';
     IonicModule.forRoot(MyApp),
     ComponentsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,7 +69,9 @@ import { SessionProvider } from '../providers/session/session';
     BaseProvider,
     ObjectProvider,
     AlertHelperProvider,
-    SessionProvider
+    SessionProvider,
+    SecureStorage,
+    SpinnerDialog
   ]
 })
 export class AppModule {}

@@ -32,4 +32,8 @@ export class AuthProvider extends BaseProvider {
       return error;
     });
   }
+
+  logout() {
+    this.session.logout();  
+  }
 }

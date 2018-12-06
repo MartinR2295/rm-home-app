@@ -4,8 +4,8 @@ import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { ObjectProvider } from '../../providers/object/object';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
-import { SessionProvider } from '../../providers/session/session';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { SessionProvider } from '../../providers/session/session';
 /**
  * Generated class for the AddProductPage page.
  *
@@ -17,7 +17,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 @Component({
   selector: 'page-add-product',
   templateUrl: 'add-product.html',
-  providers: [BarcodeScanner]
+  providers: [BarcodeScanner, SessionProvider]
 })
 export class AddProductPage {
 
@@ -44,13 +44,14 @@ export class AddProductPage {
     this.model.qrCode = this.qrcode;
     let message: string;
     let title: string = 'SUCCESS';
-
+    console.log('THIS SESSION INSIDE ADD PRODUCT', this.session.authenticated, '<--- authenticated inside add product');
     console.log(this.objp.getHeaders());
     this.objp.addObject('objects', this.model, this.objp.getHeaders()).then(data => {
       message = `Your object with the name ${this.model.object_name} and the qrcode ${this.model.qr_code_string} was added`;
     })
-    .catch(error => {
+    .catch((error) => {
       message = `An error has happened: ${error}`;
+      console.log('error in add product', error);
       title = 'ERROR';
     })
     .then(() => {

@@ -1,18 +1,27 @@
-menu-card .card-ios {
-    margin: 0px;
-    width: 100%;
-    background-color: hsla(0, 0%, 39%, 0.171);
-    border-radius: 8px;
-    font-size: 16px;
-    color: color($buttonColors, dark, base);
-}
-
-menu-card ion-icon {
-    width: 100%;
-    text-align: center;
-    font-size: 30px;
-}
-
-menu-card .text-row {
-    text-align: center;
+menu-card {
+    .card-md {
+        background-color: color($colors, secondary, base);
+    }
+    .card-ios{
+        margin: 0px;
+        width: 100%;
+        background-color: color($colors, secondary, base);
+        border-radius: 8px;
+        font-size: 16px;
+        color: color($colors, primary, base);
+    }
+    ion-icon {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        color: color($colors, primary, base);
+        padding-bottom: 5%;
+    }
+    .text-row{
+        p{
+            margin: auto;
+            color: color($colors, primary, base);
+            font-size: 16px;
+        }
+    }
 }

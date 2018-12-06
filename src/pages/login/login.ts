@@ -8,6 +8,7 @@ import { HttpResponse } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { RegisterModel } from '../../app/models/RegisterModel';
 import { SessionProvider } from '../../providers/session/session';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 /**
  * Generated class for the LoginPage page.
@@ -24,13 +25,14 @@ import { SessionProvider } from '../../providers/session/session';
 export class LoginPage {
 
   loginData:LoginModel = new LoginModel();
-  errorMessage:any = [];
+  errorMessages:any = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public alertHelper: AlertHelperProvider,
     public authProvider:AuthProvider,
-    public session: SessionProvider) {
+    public session: SessionProvider,
+    private spinnerDialog: SpinnerDialog) {
   }
 
   ionViewDidLoad() {
@@ -38,14 +40,17 @@ export class LoginPage {
   }
 
   clickLogin() {
+    this.spinnerDialog.show();
     this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
+      this.spinnerDialog.hide();
       if(status == 200) {
+        this.errorMessages = null;
         this._saveToSession(response);
         console.log(this.loginData, 'response: ', response);
         this.navCtrl.push(TabsPage);
       } else {
-        this.errorMessage("Benutzername oder Passwort falsch")
-        console.error("credentials error");
+        console.log(response.error);
+        this.errorMessages.push(JSON.parse(response.error).error.message);
       }
     });
   }
@@ -64,7 +69,8 @@ export class LoginPage {
    * @param data 
    */
   _saveToSession(data) {
-    this.session.setToken(JSON.parse(data.data).body);
+    this.session.saveSession(JSON.parse(data.data).body);
+    this.session.setAuthenticated(JSON.parse(data.data).body);
     this.session.setUser(JSON.parse(data.data).body.user);
   }
 }
