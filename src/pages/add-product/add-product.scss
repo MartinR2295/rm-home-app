@@ -43,16 +43,16 @@ default-input.qrcode > base-input > div > normal-text-label {
 }
 
 
-.neger {
+.qr-code-input {
     width: 100%;
 }
 
-.neger > default-input > base-input > input {
+.qr-code-input > default-input > base-input > input {
     width: 88%;
     float: left;
 }
 
-.neger > #camera-icon {
+.qr-code-input > #camera-icon {
     max-width: 10%;
     display: flex;
 }

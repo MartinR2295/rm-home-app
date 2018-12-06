@@ -1,31 +1,30 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-buttons end (click)="clickAddObject()">
+    <button>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-color: rgb(80, 95, 112, 0.2)">
+<ion-content style="background-color: rgb(80, 95, 112, 0.2)">
 <ion-grid>
   <ion-row>
-    <h2>Welcome to RM HOME!</h2>
+    <ion-col> <menu-card [icon]="'search'" (click)="push('search');" [text]="'Objekt verschieben'"></menu-card> </ion-col>
   </ion-row>
-  <ion-card>
-          <ion-icon name="repeat"></ion-icon>
-    <ion-card-content></ion-card-content>
-      <ion-row style="text-align: center;">
-          Objekt Verschieben
-        </ion-row>
-  </ion-card>
-  <menu-card>
-      <ion-row style="text-align: center;">
-          Objekt Verschieben
-        </ion-row>
-  </menu-card>
-  <menu-card>
-    <ion-row style="text-align: center;">
-      Objekt herausnehmen
-    </ion-row>
-  </menu-card>
+  <ion-row>
+    <ion-col> <menu-card [icon]="'search'" (click)="push('search');" [text]="'Objekt herausnehmen'"></menu-card> </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col> <menu-card [icon]="'add-circle'" (click)="push('add');" [text]="'Objekt ansehen'"></menu-card> </ion-col>
+    <ion-col> <menu-card [icon]="'search'" (click)="push('search');" [text]="'Objekt löschen'"></menu-card> </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col> <menu-card [icon]="'add-circle'" (click)="push('add');" [text]="'Objekt ausleihen'"></menu-card> </ion-col>
+    <ion-col> <menu-card [icon]="'search'" (click)="push('search');" [text]="'Objekt verkaufen'"></menu-card> </ion-col>
+  </ion-row>
   
 </ion-grid>
 </ion-content>

@@ -16,7 +16,6 @@ export class BaseProvider {
 
   getHeaders() {
    let token = '';
-    console.log('GET NEGER ', this.session.getNeger());
    console.log('authenticated IN BASE ', this.session.authenticated, this.session);
    console.log(this.session.getToken())
    if ('authenticated' in this.session) {
@@ -27,7 +26,6 @@ export class BaseProvider {
     return {
       "api-key": "KcUt52Q6JC9PVeAFkwh63946k8CBt6ss",
       'auth-token': token
-
     }
   }
 

@@ -10,7 +10,6 @@ import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage
 */
 @Injectable()
 export class SessionProvider {
-  public neger: any;
 
   public user:LoginModel = new LoginModel();
   public isAuthenticated:Boolean = false;
@@ -75,15 +74,6 @@ export class SessionProvider {
   getToken() {
     console.log('getToken', this.authenticated);
     return this.authenticated;
-  }
-
-  setNeger(data) {
-    console.log('set neger to', data);
-    this.neger = data;
-  }
-
-  getNeger() {
-    return this.neger;
   }
   logout() {
     this.secureStorage.create('session').then((storage: SecureStorageObject) => {
