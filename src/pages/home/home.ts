@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AddProductPage } from './../add-product/add-product';
 import { SearchPage } from '../search/search';
+import { ObjectDetailPage } from '../object-detail/object-detail';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +16,8 @@ export class HomePage {
   push(p:string){
     switch (p) {
       case 'search':
-        this.navCtrl.push(SearchPage);
+        console.log("click on object detail");
+        this.navCtrl.push(ObjectDetailPage);
         break;
       case 'add':
         this.navCtrl.push(AddProductPage);
