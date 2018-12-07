@@ -1,0 +1,11 @@
+page-object-detail {
+    .center-text {
+        text-align: center;
+    }
+
+    .black-line {
+        height: 1px;
+        width: 100%;
+        background-color: color($buttonColors, dark, base);
+    }
+}

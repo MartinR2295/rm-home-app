@@ -26,6 +26,7 @@ import { RegisterPage } from '../pages/register/register';
 import { SessionProvider } from '../providers/session/session';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+import { ObjectDetailPage } from '../pages/object-detail/object-detail';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
     AddProductPage,
     SearchPage,
     SettingsPage,
-    RegisterPage
+    RegisterPage,
+    ObjectDetailPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
     AddProductPage,
     SearchPage,
     SettingsPage,
-    RegisterPage
+    RegisterPage,
+    ObjectDetailPage
   ],
   providers: [
     HTTP,

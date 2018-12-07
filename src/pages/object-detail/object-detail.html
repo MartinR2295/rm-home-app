@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ObjectDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ObjectDetailPage</ion-title>
+  </ion-navbar>
+
+  <ion-segment color="secondary" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="camera">
+        <ion-icon name="camera"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        <ion-icon name="bookmark"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <header-label [text]="'Pokemon Box'" class="center-text"></header-label>
+  </ion-row>
+  <ion-row>
+    <light-gray-label [text]="'obj0000000000000025'" class="center-text"></light-gray-label>
+  </ion-row>
+  <ion-row>
+    <normal-text-label [text]="'Position'" class="center-text"></normal-text-label>
+  </ion-row>
+  <ion-row>
+    <div class="black-line"></div>
+  </ion-row>
+</ion-grid>
+</ion-content>
