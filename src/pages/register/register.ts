@@ -46,12 +46,12 @@ export class RegisterPage {
    * Function für die Registrierung eines neuen Benutzers
    */
   clickButtonRegister(){
-    this.spinnerDialog.show();
     let loginModel = new LoginModel();
     loginModel.username = this.registerData.user_username
     loginModel.password = this.registerData.user_password
 
     if(this.registerData.user_password == this.passwordWh){
+      this.spinnerDialog.show();
       this.errorMessages = null;
       this.objProvider.post('https://rm-home.rmst.eu/users',this.registerData)
       .then((result) => {
