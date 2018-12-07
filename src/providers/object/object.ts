@@ -19,14 +19,6 @@ export class ObjectProvider extends BaseProvider {
    */
   getObject(route, data, options = {}) {
    return this.http.get(BaseProvider.backpointURL + `/${route}`, data, options)
-    .then(res => {
-      console.log(res.data); // data received by server
-      return res;
-    })
-    .catch(error => {
-      console.log(error.error); // error message as string
-      return error;
-    });
   }
 
   /** Calls a DELETE with passed data and options
@@ -96,6 +88,6 @@ export class ObjectProvider extends BaseProvider {
    * @param options 
    */
   getObjectStack(route, data, options) {
-    
+    return this.http.get(BaseProvider.backpointURL + `/${route}`,null,this.getHeaders())
   }  
 }
