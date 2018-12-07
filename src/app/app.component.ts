@@ -33,6 +33,9 @@ export class MyApp {
          statusBar.styleDefault();
          splashScreen.hide();
        })
+    }).catch((error) => {
+      console.log("catch function in app.component")
+      this.rootPage = LoginPage;
     });
   }
 }

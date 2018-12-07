@@ -54,7 +54,7 @@ export class LoginPage {
       }
     });
   }
-
+ 
   clickRegister(){
     this.navCtrl.push(RegisterPage);
   }
