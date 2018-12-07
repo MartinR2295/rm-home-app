@@ -1,6 +1,7 @@
 import { BaseModel } from "./BaseModel";
 import { QRCodeModel } from "./QRCodeModel";
 import { ObjectProvider } from "./../../providers/object/object";
+import { InventoryModel } from "./InventoryModel";
 
 export class RMHObjectModel extends BaseModel {
 
@@ -10,7 +11,7 @@ export class RMHObjectModel extends BaseModel {
   public object_disposed: boolean;
   public object_borrowed: boolean;
   public sellPrice: number;
-  public object_parent: RMHObjectModel;
+  public object_parent: InventoryModel;
 
     deserialize(input: any) {
       Object.assign(this, input);

@@ -14,10 +14,10 @@ export class MyApp {
   rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public session: SessionProvider) {
-    // if(platform.is('core') || platform.is('mobileweb')) {
-    //   this.rootPage = TabsPage;
-    //   return;
-    // }
+    if(platform.is('core') || platform.is('mobileweb')) {
+      this.rootPage = TabsPage;
+      return;
+    }
    console.log("constructor of app.component.ts")
     platform.ready().then(() => {
       console.log("platform ready of app.component.ts")

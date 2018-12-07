@@ -7,10 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ObjectDetailPage</ion-title>
+    <ion-title>Detailansicht</ion-title>
   </ion-navbar>
 
-  <ion-segment mode="md" color="secondary" (ionChange)="segmentChanged($event)" [(ngModel)]="displayMode">
+  <ion-segment mode="md" color="secondary" (ionChange)="segmentChanged()" [(ngModel)]="displayMode">
       <ion-segment-button value="position">
         Position
       </ion-segment-button>
@@ -27,17 +27,21 @@
     <header-label [text]="object.object_name" class="center-text"></header-label>
   </ion-row>
   <ion-row>
-    <light-gray-label [text]="object.qr_code_string" class="center-text"></light-gray-label>
+    <light-gray-label [text]="object.qr_code_string.qr_code_string" class="center-text"></light-gray-label>
   </ion-row>
   <ion-row>
     <normal-text-label [text]="'Position'" class="center-text"></normal-text-label>
   </ion-row>
-  <ion-row>
+  <ion-row style="padding-bottom: 5px;">
     <div class="black-line"></div>
   </ion-row>
     <ion-list>
-      <ion-item *ngFor="let obj of currentObjects">
-        {{obj.object_name}}
+    <ion-item *ngFor="let obj of currentObjects" class="text-box" (click)="clickObject(obj)">
+          {{obj.object_name}}
+          <br>
+          <div class="text-box-lowerText">
+          {{obj.object_qr_code.qr_code_string}}
+        </div>
       </ion-item>
     </ion-list>
 </ion-grid>

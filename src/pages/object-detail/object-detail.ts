@@ -21,7 +21,7 @@ export class ObjectDetailPage {
   displayMode:string = "position";
   testObject:RMHObjectModel = new RMHObjectModel();
   stack:RMHObjectModel[] = [];
-  content:InventoryModel[] = [];
+  content:RMHObjectModel[] = [];
   currentObjects:RMHObjectModel[] = [];
 
   constructor(public navCtrl: NavController, 
@@ -37,7 +37,7 @@ export class ObjectDetailPage {
     console.log('ionViewDidLoad ObjectDetailPage');
   }
 
-  segmentChanged(event) {
+  segmentChanged() {
     switch (this.displayMode) {
       case "position":
         this.currentObjects = this.stack;
@@ -64,6 +64,11 @@ export class ObjectDetailPage {
 
     })
   }
+  clickObject(object) {
+    console.log('object id is', object.object_id);
+    this.navCtrl.push(ObjectDetailPage, 
+      {'object'  : JSON.stringify(object)} );
+  }
 
   getStack(id) {
     this.objp.getObject(`objects/${id}/stack`, null, this.objp.getHeaders())
@@ -82,6 +87,7 @@ export class ObjectDetailPage {
        
       }
       this.stack.push(currentObject);
+      this.segmentChanged();
 
       console.log('this.stack ', this.stack);
       
