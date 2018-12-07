@@ -6,6 +6,18 @@ page-object-detail {
     .black-line {
         height: 1px;
         width: 100%;
-        background-color: color($buttonColors, dark, base);
+        background-color: color($colors, primary, base);
+    }
+
+    .segment-md-secondary .segment-button.activated, .segment-md-secondary .segment-button.segment-activated {
+        color: color($colors, secondary, base);
+        border-color: color($colors, secondary, base);
+        opacity: 1.0;
+    }
+
+    .segment-md-secondary .segment-button {
+        color: color($colors, secondary, base);
+        background-color: color($colors, primary, base);
+        opacity: 1.0;
     }
 }

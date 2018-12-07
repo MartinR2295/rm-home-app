@@ -1,4 +1,9 @@
 header-label {
     font-size: 20px;
     color: color($labelColors, black, base);
+    width: 100%;
+
+    .header-label {
+        width: 100%;
+    }
 }

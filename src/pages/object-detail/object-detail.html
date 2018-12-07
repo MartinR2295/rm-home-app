@@ -10,24 +10,24 @@
     <ion-title>ObjectDetailPage</ion-title>
   </ion-navbar>
 
-  <ion-segment color="secondary" (ionChange)="segmentChanged($event)">
-      <ion-segment-button value="camera">
-        <ion-icon name="camera"></ion-icon>
+  <ion-segment mode="md" color="secondary" (ionChange)="segmentChanged($event)" [(ngModel)]="displayMode">
+      <ion-segment-button value="position">
+        Position
       </ion-segment-button>
-      <ion-segment-button value="bookmark">
-        <ion-icon name="bookmark"></ion-icon>
+      <ion-segment-button value="content">
+        Content
       </ion-segment-button>
     </ion-segment>
 </ion-header>
 
 
-<ion-content>
+<ion-content no-bounce>
 <ion-grid>
   <ion-row>
-    <header-label [text]="'Pokemon Box'" class="center-text"></header-label>
+    <header-label [text]="testObject.object_name" class="center-text"></header-label>
   </ion-row>
   <ion-row>
-    <light-gray-label [text]="'obj0000000000000025'" class="center-text"></light-gray-label>
+    <light-gray-label [text]="testObject.qr_code_string" class="center-text"></light-gray-label>
   </ion-row>
   <ion-row>
     <normal-text-label [text]="'Position'" class="center-text"></normal-text-label>
@@ -35,5 +35,10 @@
   <ion-row>
     <div class="black-line"></div>
   </ion-row>
+    <ion-list>
+      <ion-item *ngFor="let obj of currentObjects">
+        {{obj.object_name}}
+      </ion-item>
+    </ion-list>
 </ion-grid>
 </ion-content>

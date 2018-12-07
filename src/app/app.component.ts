@@ -19,7 +19,7 @@ export class MyApp {
       this.rootPage = TabsPage;
       return;
     }
-   /*console.log("constructor of app.component.ts")
+   console.log("constructor of app.component.ts")
     platform.ready().then(() => {
       console.log("platform ready of app.component.ts")
      this.session.restore().then((isAuthenticated: Boolean) => {
@@ -35,6 +35,6 @@ export class MyApp {
          statusBar.styleDefault();
          splashScreen.hide();
        })
-    });*/
+    });
   }
 }
