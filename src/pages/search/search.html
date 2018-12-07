@@ -28,7 +28,7 @@
           <ion-spinner name="bubbles"></ion-spinner>
       </div>
      <ion-list>
-      <ion-item *ngFor="let item of items" class="text-box" (click)="viewDetail(item.object_id)">
+      <ion-item *ngFor="let item of items" class="text-box" (click)="viewDetail(item)">
           {{item.object_name}}
           <br>
           <div class="text-box-lowerText">

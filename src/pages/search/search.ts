@@ -51,9 +51,9 @@ export class SearchPage {
     });
   }
 
-  viewDetail(id: Number) {
-    console.log('object id is', id);
+  viewDetail(object) {
+    console.log('object id is', object.object_id);
     this.navCtrl.push(ObjectDetailPage, 
-      {'object_id'  : id.toString()});
+      {'object'  : JSON.stringify(object)} );
   }
 }

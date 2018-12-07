@@ -1,4 +1,9 @@
 light-gray-label {
     font-size: 14px;
     color: color($labelColors, lightGray, base);
+    width: 100%;
+
+    .light-gray-label {
+        width: 100%;
+    }
 }

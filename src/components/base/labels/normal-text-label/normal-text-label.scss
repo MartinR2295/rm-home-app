@@ -1,4 +1,9 @@
 normal-text-label {
 font-size: 16px;
 color: color($labelColors, black, base);
+width: 100%;
+
+.normal-label {
+    width: 100%;
+}
 }

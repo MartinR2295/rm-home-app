@@ -96,6 +96,6 @@ export class ObjectProvider extends BaseProvider {
    * @param options 
    */
   getObjectStack(route, data, options) {
-    
+    return this.http.get(BaseProvider.backpointURL + `/${route}`,null,this.getHeaders())
   }  
 }

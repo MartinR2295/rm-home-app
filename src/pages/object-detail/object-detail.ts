@@ -16,14 +16,19 @@ import { ObjectProvider } from '../../providers/object/object';
 })
 export class ObjectDetailPage {
 
-  model:RMHObjectModel = new RMHObjectModel();
-  object_id;
+  object:RMHObjectModel;
+  displayMode:string = "position";
+  testObject:RMHObjectModel = new RMHObjectModel();
+  stack:RMHObjectModel[] = [];
+  content:RMHObjectModel[] = [];
+  currentObjects:RMHObjectModel[] = [];
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public objp: ObjectProvider) {
-    this.object_id = this.navParams.get('object_id');
+    this.object = JSON.parse(this.navParams.get('object'));
 
-    this.getContents(this.object_id);
+    this.getContents(this.object.object_id);
   }
 
   ionViewDidLoad() {
@@ -31,7 +36,16 @@ export class ObjectDetailPage {
   }
 
   segmentChanged(event) {
-    console.log("event", event);
+    switch (this.displayMode) {
+      case "position":
+        this.currentObjects = this.stack;
+        break;
+      case "content":
+        this.currentObjects = this.content;
+        break;
+      default:
+        break;
+    }
   }
 
   getContents(id) {
