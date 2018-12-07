@@ -10,6 +10,7 @@ export class RMHObjectModel extends BaseModel {
   public object_disposed: boolean;
   public object_borrowed: boolean;
   public sellPrice: number;
+  public object_parent: RMHObjectModel;
 
     deserialize(input: any) {
       Object.assign(this, input);
