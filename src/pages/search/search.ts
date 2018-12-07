@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ObjectProvider } from '../../providers/object/object';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
-
+import { ObjectDetailPage } from '../object-detail/object-detail';
 /**
  * Generated class for the SearchPage page.
  *
@@ -49,5 +49,11 @@ export class SearchPage {
         console.log(error.error); // error message as string
         return error;
     });
+  }
+
+  viewDetail(id: Number) {
+    console.log('object id is', id);
+    this.navCtrl.push(ObjectDetailPage, 
+      {'object_id'  : id.toString()});
   }
 }

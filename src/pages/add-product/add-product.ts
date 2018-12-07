@@ -17,7 +17,7 @@ import { SessionProvider } from '../../providers/session/session';
 @Component({
   selector: 'page-add-product',
   templateUrl: 'add-product.html',
-  providers: [BarcodeScanner, SessionProvider]
+  providers: [BarcodeScanner]
 })
 export class AddProductPage {
 
@@ -41,7 +41,7 @@ export class AddProductPage {
   }
 
   addProduct() {
-    this.model.qrCode = this.qrcode;
+    this.model.object_qr_code = this.qrcode;
     let message: string;
     let title: string = 'SUCCESS';
     console.log('THIS SESSION INSIDE ADD PRODUCT', this.session.authenticated, '<--- authenticated inside add product');
