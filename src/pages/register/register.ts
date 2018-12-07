@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, HideWhen } from 'ionic-angular';
 import { RegisterModel } from '../../app/models/RegisterModel';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -9,6 +9,7 @@ import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 import { LoginModel } from '../../app/models/LoginModel';
 import { SessionProvider } from '../../providers/session/session';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 /**
  * Generated class for the RegisterPage page.
@@ -28,7 +29,13 @@ export class RegisterPage {
   registerData:RegisterModel = new RegisterModel();
   errorMessages:any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertHelper: AlertHelperProvider, public authProvider:AuthProvider, public objProvider: ObjectProvider, public session: SessionProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public alertHelper: AlertHelperProvider, 
+    public authProvider:AuthProvider, 
+    public objProvider: ObjectProvider, 
+    public session: SessionProvider,
+    private spinnerDialog: SpinnerDialog ) {
   }
 
   ionViewDidLoad() {
@@ -39,6 +46,7 @@ export class RegisterPage {
    * Function für die Registrierung eines neuen Benutzers
    */
   clickButtonRegister(){
+    this.spinnerDialog.show();
     let loginModel = new LoginModel();
     loginModel.username = this.registerData.user_username
     loginModel.password = this.registerData.user_password
@@ -47,6 +55,7 @@ export class RegisterPage {
       this.errorMessages = null;
       this.objProvider.post('https://rm-home.rmst.eu/users',this.registerData)
       .then((result) => {
+        this.spinnerDialog.hide();
         console.log("success");
           this.alertHelper.sendAlert("Registriert","Sie wurden erfolgreich Registriert",[{text: "Ok", handler: () => {
             this.authProvider.getAuthToken(loginModel, (status: Number, response) => {
@@ -59,9 +68,11 @@ export class RegisterPage {
         }}]);
       })
       .catch((error) => {
+      this.spinnerDialog.hide();
       this.errorMessages = JSON.parse(error.error).error.message;
        console.log(JSON.parse(error.error).error.message);
        
+
       });
     }
     else
