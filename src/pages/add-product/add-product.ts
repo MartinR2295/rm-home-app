@@ -68,8 +68,8 @@ export class AddProductPage {
   getData = data =>
 {
   return new Promise((resolve, reject) => {
-    this.model.qr_code_string = data.scannedText.result;
-    console.log(data);
+    this.model.qr_code_string = data.scannedText;
+    console.log(data.scannedText);
     resolve();
   });
 };
