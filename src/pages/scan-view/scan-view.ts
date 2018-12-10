@@ -25,6 +25,9 @@ export class ScanViewPage {
       this.data = this.navParams.get('data') || []
   }
 
+  /**
+   * opens the scanner on init
+   */
   ionViewDidLoad() {
     console.log('hi');
 
@@ -56,9 +59,22 @@ export class ScanViewPage {
     .catch((e: any) => console.log('Error is', e));
   }
 
+  /**
+   * closes the scanner view on exit
+   */
+  ionViewWillLeave() {
+    window.document.querySelector('ion-app').classList.remove('cameraView');
+    this.qrScanner.hide();
+  }
+
+  /**
+   * callback function to return data to previous page
+   * @param scannedText 
+   */
   sendData(scannedText)
 {
   this.data.scannedText = scannedText;
   this.callback(this.data).then( () => { this.navCtrl.pop() });
 }
+
 }

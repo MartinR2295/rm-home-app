@@ -31,14 +31,9 @@ export class AddProductPage {
     public session: SessionProvider) {
   }
 
-  ngOnInit() {
-    console.log('test');
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddProductPage');
-  }
-
+  /**
+   * persist object model against backend 
+   */
   addProduct() {
     this.model.object_qr_code = this.qrcode;
     let message: string;
@@ -58,48 +53,18 @@ export class AddProductPage {
     });
    
   }
-
+/**
+ * opens the scan view with data and callback parameter
+ */
   scan() {
     this.navCtrl.push(ScanViewPage, {
       data: null,
     callback: this.getData
     });
-  //   this.barcodeScanner.scan().then(barcodeData => {
-  //     console.log('Barcode data', barcodeData);
-  //         this.model.qr_code_string = barcodeData.text;
-  //    }).catch(err => {
-  //        console.log('Error', err);
-  //    });
-
-  //   // this.qrScanner.prepare()
-  //   // .then((status: QRScannerStatus) => {
-  //   //   if (status.authorized) {
-  //   //     // camera permission was granted
-
-  //   //     this.qrScanner.show()
-  //   //     window.document.querySelector('ion-app').classList.add('cameraView');
-
-  //   //     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-
-  //   //       console.log('Scanned something', text);
-  //   //       this.qrcode.codeString = text;
-  //   //       window.document.querySelector('ion-app').classList.remove('cameraView');
-  //   //       this.qrScanner.hide(); // hide camera preview
-
-  //   //       scanSub.unsubscribe(); // stop scanning
-  //   //     });
-
-
-  //   //   } else if (status.denied) {
-  //   //     // camera permission was permanently denied
-  //   //   } else {
-  //   //     // permission was denied, but not permanently. You can ask for permission again at a later time.
-  //   //   }
-  //   // })
-  //   // .catch((e: any) => console.log('Error is', e));
-
   }
-
+/**
+ * callback handler for scan view
+ */
   getData = data =>
 {
   return new Promise((resolve, reject) => {
