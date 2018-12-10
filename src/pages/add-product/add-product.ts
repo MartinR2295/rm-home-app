@@ -4,8 +4,8 @@ import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { ObjectProvider } from '../../providers/object/object';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { SessionProvider } from '../../providers/session/session';
+import { ScanViewPage } from '../scan-view/scan-view';
 /**
  * Generated class for the AddProductPage page.
  *
@@ -17,17 +17,16 @@ import { SessionProvider } from '../../providers/session/session';
 @Component({
   selector: 'page-add-product',
   templateUrl: 'add-product.html',
-  providers: [BarcodeScanner]
 })
 export class AddProductPage {
 
   model:RMHObjectModel = new RMHObjectModel();
   qrcode:QRCodeModel = new QRCodeModel();
+  public isCamera: Boolean = false;
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private alert: AlertHelperProvider, 
-    private barcodeScanner: BarcodeScanner,
     private objp: ObjectProvider,
     public session: SessionProvider) {
   }
@@ -61,41 +60,52 @@ export class AddProductPage {
   }
 
   scan() {
+    this.navCtrl.push(ScanViewPage, {
+      data: null,
+    callback: this.getData
+    });
+  //   this.barcodeScanner.scan().then(barcodeData => {
+  //     console.log('Barcode data', barcodeData);
+  //         this.model.qr_code_string = barcodeData.text;
+  //    }).catch(err => {
+  //        console.log('Error', err);
+  //    });
 
-    this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
-          this.model.qr_code_string = barcodeData.text;
-     }).catch(err => {
-         console.log('Error', err);
-     });
+  //   // this.qrScanner.prepare()
+  //   // .then((status: QRScannerStatus) => {
+  //   //   if (status.authorized) {
+  //   //     // camera permission was granted
 
-    // this.qrScanner.prepare()
-    // .then((status: QRScannerStatus) => {
-    //   if (status.authorized) {
-    //     // camera permission was granted
+  //   //     this.qrScanner.show()
+  //   //     window.document.querySelector('ion-app').classList.add('cameraView');
 
-    //     this.qrScanner.show()
-    //     window.document.querySelector('ion-app').classList.add('cameraView');
+  //   //     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
 
-    //     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+  //   //       console.log('Scanned something', text);
+  //   //       this.qrcode.codeString = text;
+  //   //       window.document.querySelector('ion-app').classList.remove('cameraView');
+  //   //       this.qrScanner.hide(); // hide camera preview
 
-    //       console.log('Scanned something', text);
-    //       this.qrcode.codeString = text;
-    //       window.document.querySelector('ion-app').classList.remove('cameraView');
-    //       this.qrScanner.hide(); // hide camera preview
-
-    //       scanSub.unsubscribe(); // stop scanning
-    //     });
+  //   //       scanSub.unsubscribe(); // stop scanning
+  //   //     });
 
 
-    //   } else if (status.denied) {
-    //     // camera permission was permanently denied
-    //   } else {
-    //     // permission was denied, but not permanently. You can ask for permission again at a later time.
-    //   }
-    // })
-    // .catch((e: any) => console.log('Error is', e));
+  //   //   } else if (status.denied) {
+  //   //     // camera permission was permanently denied
+  //   //   } else {
+  //   //     // permission was denied, but not permanently. You can ask for permission again at a later time.
+  //   //   }
+  //   // })
+  //   // .catch((e: any) => console.log('Error is', e));
 
   }
 
+  getData = data =>
+{
+  return new Promise((resolve, reject) => {
+    this.model.qr_code_string = data.scannedText.result;
+    console.log(data);
+    resolve();
+  });
+};
 }

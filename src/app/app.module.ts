@@ -10,6 +10,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AddProductPage } from '../pages/add-product/add-product';
+import { ScanViewPage } from '../pages/scan-view/scan-view';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +28,7 @@ import { SessionProvider } from '../providers/session/session';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { ObjectDetailPage } from '../pages/object-detail/object-detail';
+import { QRScanner } from '@ionic-native/qr-scanner';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { ObjectDetailPage } from '../pages/object-detail/object-detail';
     AddProductPage,
     SearchPage,
     SettingsPage,
+    ScanViewPage,
     RegisterPage,
     ObjectDetailPage
   ],
@@ -55,6 +58,7 @@ import { ObjectDetailPage } from '../pages/object-detail/object-detail';
     AboutPage,
     ContactPage,
     HomePage,
+    ScanViewPage,
     TabsPage,
     LoginPage,
     AddProductPage,
@@ -74,7 +78,8 @@ import { ObjectDetailPage } from '../pages/object-detail/object-detail';
     AlertHelperProvider,
     SessionProvider,
     SecureStorage,
-    SpinnerDialog
+    SpinnerDialog,
+    QRScanner
   ]
 })
 export class AppModule {}
