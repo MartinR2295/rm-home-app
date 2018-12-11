@@ -46,7 +46,6 @@ export class RegisterPage {
    * Function für die Registrierung eines neuen Benutzers
    */
   clickButtonRegister(){
-    
     let loginModel = new LoginModel();
     loginModel.username = this.registerData.user_username
     loginModel.password = this.registerData.user_password

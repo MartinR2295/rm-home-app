@@ -1,20 +1,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>RM-Home</ion-title>
+    <ion-title>Einstellungen</ion-title>
     <ion-buttons end (click)="clickLogout()">
       <button>
         <ion-icon name="md-exit"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding style="background-color: rgb(80, 95, 112, 0.2);">
-  <ion-row class="row-margin">
-    <h2>Einstellungen</h2>
-  </ion-row>
   <ion-row class="row-margin">
       <text-icon-input [placeholder]="'Benutzername'" [(value)]="userData.user_username" [icon]="'person'"></text-icon-input>
     </ion-row>

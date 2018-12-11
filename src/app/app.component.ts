@@ -9,7 +9,6 @@ import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html',
-  providers: [SessionProvider]
 })
 export class MyApp {
   rootPage:any;
@@ -24,7 +23,6 @@ export class MyApp {
       console.log("platform ready of app.component.ts")
      this.session.restore().then((isAuthenticated: Boolean) => {
       console.log("then of app.component.ts")
-        console.log("token: ", this.session.getToken().token)
         if (isAuthenticated) {
           this.rootPage = TabsPage;
         } else {
@@ -35,6 +33,9 @@ export class MyApp {
          statusBar.styleDefault();
          splashScreen.hide();
        })
+    }).catch((error) => {
+      console.log("catch function in app.component")
+      this.rootPage = LoginPage;
     });
   }
 }

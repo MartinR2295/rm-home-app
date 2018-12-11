@@ -14,6 +14,7 @@ import { DefaultInputComponent } from './input/default-input/default-input';
 import { TextIconInputComponent } from './input/text-icon-input/text-icon-input';
 import { IonicModule } from 'ionic-angular';
 import { MenuCardComponent } from './elements/cards/menu-card/menu-card';
+import { StackElementComponent } from './elements/stack-element/stack-element';
 
 @NgModule({
 	declarations: [BaseViewComponent,
@@ -27,7 +28,8 @@ import { MenuCardComponent } from './elements/cards/menu-card/menu-card';
     BaseInputComponent,
     DefaultInputComponent,
     TextIconInputComponent,
-    MenuCardComponent],
+    MenuCardComponent,
+    StackElementComponent],
 	imports: [BrowserModule, FormsModule, IonicModule],
 	exports: [BaseViewComponent,
     BaseButtonComponent,
@@ -40,6 +42,7 @@ import { MenuCardComponent } from './elements/cards/menu-card/menu-card';
     BaseInputComponent,
     DefaultInputComponent,
     TextIconInputComponent,
-    MenuCardComponent]
+    MenuCardComponent,
+    StackElementComponent]
 })
 export class ComponentsModule {}

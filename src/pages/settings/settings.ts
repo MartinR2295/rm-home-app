@@ -40,6 +40,7 @@ export class SettingsPage {
     this.navCtrl.setRoot(LoginPage);
     this.navCtrl.popToRoot();
     this.app.getRootNav().setRoot(LoginPage);
+    this.session.logout()
   }
 
   clickSave(){

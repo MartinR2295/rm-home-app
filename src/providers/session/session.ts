@@ -18,7 +18,7 @@ export class SessionProvider {
 
   constructor() {
     console.log("constructor of session.ts")
-    this.restore();
+    // this.restore();
   }
 
   /**

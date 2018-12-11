@@ -15,20 +15,21 @@
   
   </ion-header>
   
-  <ion-content padding style="background-color: rgb(80, 95, 112, 0.2)">
+  <ion-content mode="md" padding style="background-color: rgb(80, 95, 112, 0.2)">
   <div >
   <ion-grid>
       <div>
       <ion-searchbar
           [(ngModel)]="searchTerm"
           (ionInput)="filteredItems()"
-          placeholder="Objektname">
+          placeholder="Objektname"
+          mode="md">
       </ion-searchbar>
       <div *ngIf="suche" class="spinner-container">
           <ion-spinner name="bubbles"></ion-spinner>
       </div>
      <ion-list>
-      <ion-item *ngFor="let item of items" class="text-box">
+      <ion-item *ngFor="let item of items" class="text-box" (click)="viewDetail(item)">
           {{item.object_name}}
           <br>
           <div class="text-box-lowerText">

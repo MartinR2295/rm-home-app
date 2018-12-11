@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
-
+import { InventoryModel } from '../../app/models/InventoryModel';
+import { ObjectProvider } from '../../providers/object/object';
 /**
  * Generated class for the ObjectDetailPage page.
  *
@@ -16,40 +17,27 @@ import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 })
 export class ObjectDetailPage {
 
+  object:RMHObjectModel;
   displayMode:string = "position";
   testObject:RMHObjectModel = new RMHObjectModel();
   stack:RMHObjectModel[] = [];
   content:RMHObjectModel[] = [];
   currentObjects:RMHObjectModel[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.testObject.object_name = "iPhone";
-    this.testObject.qr_code_string = "obj0000000000000012";
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public objp: ObjectProvider) {
+    this.object = JSON.parse(this.navParams.get('object'));
 
-    for (let index = 0; index < 30; index++) {
-      var obj = new RMHObjectModel();
-      obj.object_name = "TestObj"+index;
-      obj.id = index;
-      obj.qr_code_string = "obj000000000000"+index;
-      this.stack.push(obj);
-    }
-
-    for (let index = 0; index < 30; index++) {
-      var obj = new RMHObjectModel();
-      obj.object_name = "TestContent"+index;
-      obj.id = index;
-      obj.qr_code_string = "obj000000000000"+index;
-      this.content.push(obj);
-    }
-
-    this.currentObjects = this.stack;
+    this.getContents(this.object.object_id);
+    this.getStack(this.object.object_id);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ObjectDetailPage');
   }
 
-  segmentChanged(event) {
+  segmentChanged() {
     switch (this.displayMode) {
       case "position":
         this.currentObjects = this.stack;
@@ -60,5 +48,56 @@ export class ObjectDetailPage {
       default:
         break;
     }
+  }
+
+  getContents(id) {
+    this.objp.getObject(`objects/${id}/content`, null, this.objp.getHeaders())
+
+    .then((res) => {
+      this.content = JSON.parse(res.data).body;
+    })
+    .catch((error) => {
+      console.log('error: ', error);
+
+    })
+    .then(() => { //finally 
+
+    })
+  }
+  clickObject(object) {
+    console.log('object id is', object.object_id);
+    this.navCtrl.push(ObjectDetailPage, 
+      {'object'  : JSON.stringify(object)} );
+  }
+
+  getStack(id) {
+    this.objp.getObject(`objects/${id}/stack`, null, this.objp.getHeaders())
+
+    .then((res) => {
+      console.log('stack: ', res);
+
+      var currentObject:RMHObjectModel = JSON.parse(res.data).body;
+
+      while (currentObject.object_parent) {
+        this.stack.push(currentObject); 
+
+        if (currentObject.object_parent) {
+          currentObject = currentObject.object_parent;
+        }
+       
+      }
+      this.stack.push(currentObject);
+      this.segmentChanged();
+
+      console.log('this.stack ', this.stack);
+      
+    })
+    .catch((error) => {
+      console.log('error: ', error);
+
+    })
+    .then(() => { //finally 
+
+    })
   }
 }
