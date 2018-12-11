@@ -19,13 +19,15 @@ export class BaseProvider {
    console.log('authenticated IN BASE ', this.session.authenticated, this.session);
    console.log(this.session.getToken())
    if ('authenticated' in this.session) {
-       token = this.session.authenticated.token;
+    token = this.session.authenticated.token;
        console.log('TOKENS', token);
    }
 
     return {
       "api-key": "KcUt52Q6JC9PVeAFkwh63946k8CBt6ss",
       'auth-token': token
+      //'auth-token': "39be75070992aac40234aadf7684f0966568fac56c54e87f81e6aea676e80c339cc532430ff63954637cd6d5521dd13d9526fd076fa1321fc57783637ad2acae"
+
     }
   }
 

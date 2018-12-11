@@ -27,6 +27,7 @@ import { SessionProvider } from '../providers/session/session';
 import { SecureStorage } from '@ionic-native/secure-storage';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { ObjectDetailPage } from '../pages/object-detail/object-detail';
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ObjectDetailPage } from '../pages/object-detail/object-detail';
     AlertHelperProvider,
     SessionProvider,
     SecureStorage,
-    SpinnerDialog
+    SpinnerDialog,
+    UserProvider
   ]
 })
 export class AppModule {}

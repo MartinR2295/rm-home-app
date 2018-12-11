@@ -22,6 +22,7 @@ export class AuthProvider extends BaseProvider {
       callback(res.status, res);
       console.log("then")
       console.log(res.data); // data received by server
+      //return res;
       return res;
     })
     .catch(error => {
@@ -32,6 +33,8 @@ export class AuthProvider extends BaseProvider {
       return error;
     });
   }
+
+ 
 
   logout() {
     this.session.logout();  
