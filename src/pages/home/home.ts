@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AddProductPage } from './../add-product/add-product';
 import { SearchPage } from '../search/search';
 import { ObjectDetailPage } from '../object-detail/object-detail';
+import { MoveObjectPage } from '../move-object/move-object';
 
 @Component({
   selector: 'page-home',
@@ -22,6 +23,8 @@ export class HomePage {
       case 'add':
         this.navCtrl.push(AddProductPage);
         break;
+      case 'move':
+        this.navCtrl.push(MoveObjectPage);
       default:
         break;
     }

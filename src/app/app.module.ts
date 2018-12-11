@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AddProductPage } from '../pages/add-product/add-product';
 import { ScanViewPage } from '../pages/scan-view/scan-view';
+import { MoveObjectPage } from '../pages/move-object/move-object';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,6 +44,7 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     SettingsPage,
     ScanViewPage,
     RegisterPage,
+    MoveObjectPage,
     ObjectDetailPage
   ],
   imports: [
@@ -65,7 +67,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     SearchPage,
     SettingsPage,
     RegisterPage,
-    ObjectDetailPage
+    ObjectDetailPage,
+    MoveObjectPage
   ],
   providers: [
     HTTP,

@@ -44,7 +44,7 @@ export class AddProductPage {
       message = `Your object with the name ${this.model.object_name} and the qrcode ${this.model.qr_code_string} was added`;
     })
     .catch((error) => {
-      message = `An error has happened: ${error}`;
+      message = `An error has happened: ${JSON.parse(error.error).error.message}`;
       console.log('error in add product', error);
       title = 'ERROR';
     })

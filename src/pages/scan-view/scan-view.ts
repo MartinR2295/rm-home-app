@@ -18,6 +18,7 @@ export class ScanViewPage {
 
   data: any;
   callback: any;
+  scanSub: any;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      private qrScanner: QRScanner) {
@@ -39,13 +40,13 @@ export class ScanViewPage {
         this.qrScanner.show()
         window.document.querySelector('ion-app').classList.add('cameraView');
 
-        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+        this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
 
           console.log('Scanned something', text);
           window.document.querySelector('ion-app').classList.remove('cameraView');
           this.qrScanner.hide(); // hide camera preview
           
-          scanSub.unsubscribe(); // stop scanning
+          this.scanSub.unsubscribe(); // stop scanning
           this.sendData(text);
         });
 
@@ -64,7 +65,9 @@ export class ScanViewPage {
    */
   ionViewWillLeave() {
     window.document.querySelector('ion-app').classList.remove('cameraView');
+    this.scanSub.unsubscribe();
     this.qrScanner.hide();
+    this.qrScanner.destroy();
   }
 
   /**
