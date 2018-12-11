@@ -24,7 +24,7 @@
     </div>
 
     <div class="bottom">
-      <light-button class="move-button-bottom" [text]="'Neues Aufbewahrungsobjekt scannen'"></light-button>
+      <light-button (click)="reset()" class="move-button-bottom" [text]="'Neues Aufbewahrungsobjekt scannen'"></light-button>
 
       <div class="move-objects-list" *ngIf="arrayOfRMHObjects?.length > 0">
           <ul>

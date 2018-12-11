@@ -172,4 +172,15 @@ export class MoveObjectPage {
       position: 'bottom'
     }).present();
   }
+
+  /**
+   * Resets everything so you can scan something else
+   */
+  reset() {
+    this.arrayOfRMHObjects = [];
+    this.moveInstructions = ' Bitte scannen Sie das Objekt in das sie etwas hineinlegen wollen';
+    this.destinationObject = null;
+    this.shouldScan = true;
+    this.lastScannedQrCode = '';
+  }
 }
