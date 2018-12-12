@@ -58,12 +58,14 @@ export class RegisterPage {
         this.spinnerDialog.hide();
         console.log("success");
           this.alertHelper.sendAlert("Registriert","Sie wurden erfolgreich Registriert",[{text: "Ok", handler: () => {
+            this.spinnerDialog.show();
             this.authProvider.getAuthToken(loginModel, (status: Number, response) => {
+              this.spinnerDialog.hide();
               if(status == 200) {
                 this._saveToSession(response);
                 console.log(loginModel, 'response: ', response);
                 this.navCtrl.push(TabsPage);
-              } 
+              }
             }); 
         }}]);
       })
@@ -87,7 +89,8 @@ export class RegisterPage {
    * @param data 
    */
   _saveToSession(data) {
-    //this.session.setToken(JSON.parse(data.data).body);
+    this.session.saveSession(JSON.parse(data.data).body);
+    this.session.setAuthenticated(JSON.parse(data.data).body);
     this.session.setUser(JSON.parse(data.data).body.user);
   }
   
