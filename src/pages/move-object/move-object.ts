@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { ObjectProvider } from '../../providers/object/object';
 import { InventoryModel } from '../../app/models/InventoryModel';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { ToastController } from 'ionic-angular';
-
+import { ScannerComponent } from '../../components/scanner/scanner';
 /**
  * Generated class for the MoveObjectPage page.
  *
@@ -19,12 +19,16 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'move-object.html',
 })
 export class MoveObjectPage {
+  @ViewChild(ScannerComponent)
+  private scannerComponent : ScannerComponent;
+
   arrayOfRMHObjects: InventoryModel[] = [];
   moveInstructions: String = ' Bitte scannen Sie das Objekt in das sie etwas hineinlegen wollen';
   destinationObject: RMHObjectModel = null;
   public shouldScan: Boolean = true;
   alert: any;
   lastScannedQrCode: String = '';
+  public qrScanner: any;
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
@@ -222,4 +226,13 @@ export class MoveObjectPage {
     this.shouldScan = true;
     this.lastScannedQrCode = '';
   }
+
+  /**
+   * destroy the scanner when page is left / tabs changed
+   */
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    this.scannerComponent.destroy();
+  }
+  
 }

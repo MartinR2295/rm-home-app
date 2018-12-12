@@ -1,7 +1,7 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { Subscription } from 'rxjs/Subscription';
-
+import {NavController, Platform} from 'ionic-angular';
 /**
  * Generated class for the ScannerComponent component.
  *
@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ScannerComponent {
 
+
   text: string;
   data: any;
   @Output() onScan: EventEmitter<any> = new EventEmitter();
@@ -21,7 +22,7 @@ export class ScannerComponent {
   shouldDestroyScanner: Boolean = false;
 
   constructor(
-     private qrScanner: QRScanner) {
+     private qrScanner: QRScanner, private navController: NavController, private platform: Platform) {
   }
   ngAfterViewInit() {
     this.startScanner();
@@ -36,7 +37,6 @@ export class ScannerComponent {
     .then((status: QRScannerStatus) => {
       if (status.authorized) {
         // camera permission was granted
-
         this.qrScanner.show()
         window.document.querySelector('ion-app').classList.add('cameraView');
 
@@ -71,11 +71,7 @@ export class ScannerComponent {
    * closes the scanner view on exit
    */
   ngOnDestroy() {
-    window.document.querySelector('ion-app').classList.remove('cameraView');
-    this.qrScanner.hide(); // hide camera preview
-    this.shouldDestroyScanner = true;
-    this.qrScanner.destroy();
-    console.log('destroyed');
+   this.destroy();
   }
 
     /**
@@ -86,5 +82,15 @@ export class ScannerComponent {
   scanned(scannedEntry: any): void {
     this.onScan.emit([scannedEntry]);
 }
+
+destroy() {
+  window.document.querySelector('ion-app').classList.remove('cameraView');
+  this.qrScanner.hide(); // hide camera preview
+  this.shouldDestroyScanner = true;
+  this.qrScanner.destroy();
+  console.log('destroyed');
+}
+
+
 
 }
