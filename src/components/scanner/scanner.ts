@@ -24,9 +24,10 @@ export class ScannerComponent {
   constructor(
      private qrScanner: QRScanner, private navController: NavController, private platform: Platform) {
   }
-  ngAfterViewInit() {
-    this.startScanner();
-  }
+
+  // ngAfterViewInit() {
+  //   this.startScanner();
+  // }
   /**
    * opens the scanner on init
    */

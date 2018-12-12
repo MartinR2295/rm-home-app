@@ -37,9 +37,9 @@ export class MoveObjectPage {
     private alerthlpr: AlertHelperProvider,
     private toastCtrl: ToastController) { }
 
-  ionViewDidLoad() {
+    ionViewDidEnter() {
     console.log('ionViewDidLoad MoveObjectPage');
-    
+    this.scannerComponent.startScanner();
   }
 
 /**
