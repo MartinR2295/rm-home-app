@@ -28,7 +28,6 @@ export class MoveObjectPage {
   public shouldScan: Boolean = true;
   alert: any;
   lastScannedQrCode: String = '';
-  public qrScanner: any;
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
@@ -152,7 +151,6 @@ export class MoveObjectPage {
         console.log('finally queryForObject');
         this.enableScan();
         this.alert.dismiss();
-        // TODO add to scrollView
       })
   }
 
@@ -182,7 +180,6 @@ export class MoveObjectPage {
       console.log('moveObject finally', this.arrayOfRMHObjects);
       this.enableScan();
       this.alert.dismiss();
-      // TODO add to scrollView
     })
   }
 /**

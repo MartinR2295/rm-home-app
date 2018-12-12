@@ -4,6 +4,8 @@ import { AddProductPage } from './../add-product/add-product';
 import { SearchPage } from '../search/search';
 import { ObjectDetailPage } from '../object-detail/object-detail';
 import { MoveObjectPage } from '../move-object/move-object';
+import { RemoveObjectPage } from '../remove-object/remove-object';
+
 
 @Component({
   selector: 'page-home',
@@ -25,7 +27,9 @@ export class HomePage {
         break;
       case 'move':
         this.navCtrl.push(MoveObjectPage);
-      default:
+      case 'remove':
+      this.navCtrl.push(RemoveObjectPage);
+    default:
         break;
     }
   }
