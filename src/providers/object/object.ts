@@ -12,12 +12,14 @@ import { BaseProvider } from '../base/base';
 @Injectable()
 export class ObjectProvider extends BaseProvider {
 
+  public backpointURL: String = BaseProvider.backpointURL;
+
   /** Calls a GET with passed data and options
    * @param data 
    * @param options optional
    * @param route the route (eg. object)
    */
-  getObject(route, data, options = {}) {
+  getObject(route, data, options = this.getHeaders()) {
    return this.http.get(BaseProvider.backpointURL + `/${route}`, data, options)
   }
 

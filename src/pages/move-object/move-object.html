@@ -1,0 +1,54 @@
+<!--
+  Generated template for the MoveObjectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Verschieben</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding no-bounce>
+
+  <scanner (onScan)="getScanResult($event[0])" [shouldScan]='shouldScan'>
+
+    <div class="move-instructions-panel">
+      <p>
+       {{this.moveInstructions}}
+      </p>
+    </div>
+
+    <div class="bottom">
+      <light-button (click)="reset()" class="move-button-bottom" [text]="'Neues Aufbewahrungsobjekt scannen'"></light-button>
+
+      <div class="move-objects-list" *ngIf="arrayOfRMHObjects?.length > 0">
+          <ul>
+              <li class="kek" *ngFor="let object of arrayOfRMHObjects;  let i = index" [attr.data-index]="i">
+                   
+                 <div>{{object.object_name}}</div>
+                  <div>➔</div>
+                    <div>{{destinationObject.object_name}}</div>
+                </li>
+            </ul>
+      </div>
+
+      <!-- <ion-list class="move-objects-list">
+          <ion-item>
+            <span>
+              COFFEE ➔ LOL
+            </span>
+            <span>
+                KEK ➔ LOL
+              </span>
+            </ion-item>
+          </ion-list> -->
+    </div>
+
+  </scanner>
+
+</ion-content>

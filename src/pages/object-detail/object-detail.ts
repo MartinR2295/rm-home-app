@@ -27,6 +27,7 @@ export class ObjectDetailPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public objp: ObjectProvider) {
+      console.log('constructor ObjectDetailPage');
     this.object = JSON.parse(this.navParams.get('object'));
 
     this.getContents(this.object.object_id);
@@ -50,24 +51,21 @@ export class ObjectDetailPage {
     }
   }
 
-  getContents(id) {
-    this.objp.getObject(`objects/${id}/content`, null, this.objp.getHeaders())
-
-    .then((res) => {
-      this.content = JSON.parse(res.data).body;
-    })
-    .catch((error) => {
-      console.log('error: ', error);
-
-    })
-    .then(() => { //finally 
-
-    })
-  }
   clickObject(object) {
     console.log('object id is', object.object_id);
     this.navCtrl.push(ObjectDetailPage, 
       {'object'  : JSON.stringify(object)} );
+  }
+
+  getContents(id) {
+    this.objp.getObject(`objects/${id}/content`, null, this.objp.getHeaders())
+    .then((res) => {
+      this.content = JSON.parse(res.data).body;
+    })
+    .catch((error) => {
+      console.log('error getContents: ', error);
+
+    })
   }
 
   getStack(id) {
@@ -84,7 +82,6 @@ export class ObjectDetailPage {
         if (currentObject.object_parent) {
           currentObject = currentObject.object_parent;
         }
-       
       }
       this.stack.push(currentObject);
       this.segmentChanged();
@@ -93,10 +90,7 @@ export class ObjectDetailPage {
       
     })
     .catch((error) => {
-      console.log('error: ', error);
-
-    })
-    .then(() => { //finally 
+      console.log('error getStack: ', error);
 
     })
   }

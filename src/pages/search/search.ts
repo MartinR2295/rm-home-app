@@ -46,7 +46,7 @@ export class SearchPage {
       });
       
     }).catch(error => {
-        console.log(error.error); // error message as string
+        console.log("search api error", error.error); // error message as string
         return error;
     });
   }

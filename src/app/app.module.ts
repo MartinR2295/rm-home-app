@@ -10,6 +10,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AddProductPage } from '../pages/add-product/add-product';
+import { ScanViewPage } from '../pages/scan-view/scan-view';
+import { MoveObjectPage } from '../pages/move-object/move-object';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,6 +31,7 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { ObjectDetailPage } from '../pages/object-detail/object-detail';
 import { UserProvider } from '../providers/user/user';
 import { PasswordPage } from '../pages/password/password';
+import { QRScanner } from '@ionic-native/qr-scanner';
 
 @NgModule({
   declarations: [
@@ -41,9 +44,12 @@ import { PasswordPage } from '../pages/password/password';
     AddProductPage,
     SearchPage,
     SettingsPage,
+    ScanViewPage,
     RegisterPage,
     ObjectDetailPage,
-    PasswordPage
+    PasswordPage,
+    MoveObjectPage,
+    ObjectDetailPage
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,7 @@ import { PasswordPage } from '../pages/password/password';
     AboutPage,
     ContactPage,
     HomePage,
+    ScanViewPage,
     TabsPage,
     LoginPage,
     AddProductPage,
@@ -65,7 +72,8 @@ import { PasswordPage } from '../pages/password/password';
     SettingsPage,
     RegisterPage,
     ObjectDetailPage,
-    PasswordPage
+    PasswordPage,
+    MoveObjectPage
   ],
   providers: [
     HTTP,
@@ -79,7 +87,8 @@ import { PasswordPage } from '../pages/password/password';
     SessionProvider,
     SecureStorage,
     SpinnerDialog,
-    UserProvider
+    UserProvider,
+    QRScanner
   ]
 })
 export class AppModule {}

@@ -1,0 +1,153 @@
+page-move-object {
+
+}
+
+.move-instructions-panel {
+    font-size: 20px;
+    background: color($colors, primary, base);
+    opacity: 0.7;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: -8%;
+    p {
+        padding: 5px;
+    }
+}
+
+.move-button-bottom {
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: color($colors, primary, base);
+
+}
+
+.move-objects-list {
+    background-color: white;
+    max-height: 90px;
+    overflow: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+
+    ul, ion-item {
+        list-style-type: none;
+        text-align: center;
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+        text-align: justify;
+
+        :after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+        }
+
+        li {
+            border-bottom: 1px solid color($colors, primary, base);
+        }
+    }
+}
+
+// Define vars we'll be using
+$brand-success: #5cb85c;
+$loader-size: 7em;
+$check-height: $loader-size/2;
+$check-width: $check-height/2;
+$check-left: ($loader-size/6 + $loader-size/12);
+$check-thickness: 3px;
+$check-color: $brand-success;
+
+.circle-loader {
+  margin-bottom: $loader-size/2;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-left-color: $check-color;
+  animation: loader-spin 1.2s infinite linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  width: $loader-size;
+  height: $loader-size;
+}
+
+.load-complete {
+  -webkit-animation: none;
+  animation: none;
+  border-color: $check-color;
+  transition: border 500ms ease-out;
+}
+
+.checkmark {
+  display: none;
+  
+  &.draw:after {
+    animation-duration: 800ms;
+    animation-timing-function: ease;
+    animation-name: checkmark;
+    transform: scaleX(-1) rotate(135deg);
+  }
+  
+  &:after {
+    opacity: 1;
+    height: $check-height;
+    width: $check-width;
+    transform-origin: left top;
+    border-right: $check-thickness solid $check-color;
+    border-top: $check-thickness solid $check-color;
+    content: '';
+    left: $check-left;
+    top: $check-height;
+    position: absolute;
+  }
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: $check-width;
+    opacity: 1;
+  }
+  40% {
+    height: $check-height;
+    width: $check-width;
+    opacity: 1;
+  }
+  100% {
+    height: $check-height;
+    width: $check-width;
+    opacity: 1;
+  }
+}
+
+.kek {
+    div {
+        width: 33%;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px;
+    }
+}
