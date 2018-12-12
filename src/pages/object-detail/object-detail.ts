@@ -27,6 +27,7 @@ export class ObjectDetailPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public objp: ObjectProvider) {
+      console.log('constructor ObjectDetailPage');
     this.object = JSON.parse(this.navParams.get('object'));
 
     this.getContents(this.object.object_id);
@@ -50,6 +51,12 @@ export class ObjectDetailPage {
     }
   }
 
+  clickObject(object) {
+    console.log('object id is', object.object_id);
+    this.navCtrl.push(ObjectDetailPage, 
+      {'object'  : JSON.stringify(object)} );
+  }
+
   getContents(id) {
     this.objp.getObject(`objects/${id}/content`, null, this.objp.getHeaders())
 
@@ -63,11 +70,6 @@ export class ObjectDetailPage {
     .then(() => { //finally 
 
     })
-  }
-  clickObject(object) {
-    console.log('object id is', object.object_id);
-    this.navCtrl.push(ObjectDetailPage, 
-      {'object'  : JSON.stringify(object)} );
   }
 
   getStack(id) {
