@@ -28,6 +28,7 @@ import { SecureStorage } from '@ionic-native/secure-storage';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { ObjectDetailPage } from '../pages/object-detail/object-detail';
 import { UserProvider } from '../providers/user/user';
+import { PasswordPage } from '../pages/password/password';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UserProvider } from '../providers/user/user';
     SearchPage,
     SettingsPage,
     RegisterPage,
-    ObjectDetailPage
+    ObjectDetailPage,
+    PasswordPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { UserProvider } from '../providers/user/user';
     SearchPage,
     SettingsPage,
     RegisterPage,
-    ObjectDetailPage
+    ObjectDetailPage,
+    PasswordPage
   ],
   providers: [
     HTTP,

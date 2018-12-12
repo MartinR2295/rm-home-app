@@ -25,9 +25,19 @@ export class AlertHelperProvider {
    * @param buttons 
    */
   sendAlert(title, body, buttons:any = ['OK']) {
+    var errorString:string = "";
+    if(body instanceof Array) {
+      body.forEach(element => {
+        errorString += element+"<br>";
+      });
+    } else {
+        errorString = body;
+    }
+   
+
     let alert = this.alertCtrl.create({
       title: title,
-      subTitle: body,
+      subTitle: errorString,
       buttons
     });
     alert.present();

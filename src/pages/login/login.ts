@@ -9,6 +9,7 @@ import { RegisterPage } from '../register/register';
 import { RegisterModel } from '../../app/models/RegisterModel';
 import { SessionProvider } from '../../providers/session/session';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+import { PasswordPage } from '../password/password';
 
 /**
  * Generated class for the LoginPage page.
@@ -55,6 +56,10 @@ export class LoginPage {
     });
   }
  
+  clickPasswordReset() {
+    this.navCtrl.push(PasswordPage);
+  }
+
   clickRegister(){
     this.navCtrl.push(RegisterPage);
   }

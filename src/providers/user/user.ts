@@ -22,7 +22,13 @@ export class UserProvider extends BaseProvider {
   }
 
   updateUserData(userModel:UserModel) {
-    return this.http.put(BaseProvider.backpointURL + "/user",userModel,this.getHeaders())
+    return this.http.put(BaseProvider.backpointURL + "/user",userModel,this.getHeaders());
+  }
+
+  resetUserPassword(userModel:UserModel) {
+    return this.http.post(BaseProvider.backpointURL + "/password/reset", userModel, this.getHeaders()).then((item: any) => {
+      return JSON.parse(item.data).body;
+    });
   }
 
 }
