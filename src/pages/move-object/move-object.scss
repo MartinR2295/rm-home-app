@@ -4,8 +4,9 @@ page-move-object {
 
 .move-instructions-panel {
     font-size: 20px;
-    background: gray;
+    background: color($colors, primary, base);
     opacity: 0.7;
+    color: white;
     border-radius: 10px;
     text-align: center;
     margin-top: -8%;
