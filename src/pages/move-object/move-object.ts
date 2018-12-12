@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { ObjectProvider } from '../../providers/object/object';
 import { InventoryModel } from '../../app/models/InventoryModel';
-import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { ToastController } from 'ionic-angular';
 import { ScannerComponent } from '../../components/scanner/scanner';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 /**
  * Generated class for the MoveObjectPage page.
  *
@@ -26,15 +26,13 @@ export class MoveObjectPage {
   moveInstructions: String = ' Bitte scannen Sie das Objekt in das sie etwas hineinlegen wollen';
   destinationObject: RMHObjectModel = null;
   public shouldScan: Boolean = true;
-  alert: any;
   lastScannedQrCode: String = '';
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
     private objp: ObjectProvider,
-    private alertCtrl:AlertController,
-    private alerthlpr: AlertHelperProvider,
-    private toastCtrl: ToastController) { }
+    private toastCtrl: ToastController,
+    private spinner: SpinnerDialog) { }
 
     ionViewDidEnter() {
     console.log('ionViewDidLoad MoveObjectPage');
@@ -64,19 +62,12 @@ export class MoveObjectPage {
  */
   _startMovingProcess(scanObject) {
     this.shouldScan = false; // stops us from receiving new scan results while moving
-    this.alert = this.alertCtrl.create({
-      title: 'Loading',
-      subTitle: `<div class="circle-loader">
-      <div class="checkmark draw"></div>
-    </div>`,
-      buttons: null,
-    });
 
     console.log('SAME');
 
 
     if (this.lastScannedQrCode != scanObject) {
-      this.alert.present();
+      this.spinner.show();
       if (!this.destinationObject) {
       
         this.lastScannedQrCode = scanObject;
@@ -85,7 +76,7 @@ export class MoveObjectPage {
       
         this._sendToast('Sie können nicht ein Objekt in das selbe Objekt verschieben!');
         this.enableScan();
-        this.alert.dismiss();
+        this.spinner.hide();
         return;
       } else {
         this.lastScannedQrCode = scanObject;
@@ -95,35 +86,9 @@ export class MoveObjectPage {
       console.log('lul', scanObject);
      } else {
       this.enableScan();
-      this.alert.dismiss();
+      this.spinner.hide();
       return;
      }
-
-
-  //   if (!this.destinationObject) {
-      
-  //     this.lastScannedQrCode = scanObject;
-  //     this._queryForObject(scanObject);
-  //     console.log('lul', scanObject);
-  //     console.log('SAME');
-  //     this.enableScan();
-  //     this.alert.dismiss();
-  //     return;
-  //   } else if (this.lastScannedQrCode === scanObject) {
-  // } 
-  // this.alert.present();
-
-  //   if (scanObject === this.destinationObject.object_qr_code.qr_code_string) {
-      
-  //     this._sendToast('Sie können nicht ein Objekt in das selbe Objekt verschieben!');
-  //     this.enableScan();
-  //     this.alert.dismiss();
-  //     return;
-  //   } else {
-  //     this.lastScannedQrCode = scanObject;
-  //     this._moveObject(scanObject);
-  //     return;
-  //   }
   } 
 
   /**
@@ -150,7 +115,7 @@ export class MoveObjectPage {
       .then(() => { //finally 
         console.log('finally queryForObject');
         this.enableScan();
-        this.alert.dismiss();
+        this.spinner.hide();
       })
   }
 
@@ -179,7 +144,8 @@ export class MoveObjectPage {
     .then(() => { //finally 
       console.log('moveObject finally', this.arrayOfRMHObjects);
       this.enableScan();
-      this.alert.dismiss();
+      this.spinner.hide();
+
     })
   }
 /**
