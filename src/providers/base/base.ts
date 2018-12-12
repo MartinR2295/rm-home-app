@@ -15,7 +15,7 @@ export class BaseProvider {
   constructor(public http: HTTP, public session: SessionProvider) {}
 
   getHeaders() {
-   let token = '39be75070992aac40234aadf7684f0966568fac56c54e87f81e6aea676e80c339cc532430ff63954637cd6d5521dd13d9526fd076fa1321fc57783637ad2acae';
+   let token = '755dfce463d3dac8901e1789cd65ac36774dfdb878a8457c618f77be28729755ed625a70fba775c29a3f694c41467cf068574f1d888bfae769a7e6d564ecf480';
    console.log('authenticated IN BASE ', this.session.authenticated, this.session);
    console.log(this.session.getToken())
    if ('authenticated' in this.session) {

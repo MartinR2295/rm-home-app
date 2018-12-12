@@ -43,8 +43,14 @@ export class MoveObjectPage {
  * @param scanObject 
  */
   getScanResult(scanObject) {
-
-    this._startMovingProcess(scanObject);
+    console.log('scanObject', scanObject);
+    let scanedResult = scanObject;
+    if (scanObject.result) {
+      scanedResult = scanObject.result;
+    }
+    if (this.shouldScan) {
+      this._startMovingProcess(scanedResult);
+    }
   }
   
   /**
@@ -63,23 +69,58 @@ export class MoveObjectPage {
       buttons: null,
     });
 
-    console.log('lul', scanObject.result);
-    if (!this.destinationObject) {
-      this.lastScannedQrCode = scanObject.result;
-    } else if (scanObject.result === this.destinationObject.object_qr_code.qr_code_string) {
-    
+    console.log('SAME');
+
+
+    if (this.lastScannedQrCode != scanObject) {
+      this.alert.present();
+      if (!this.destinationObject) {
+      
+        this.lastScannedQrCode = scanObject;
+        this._queryForObject(scanObject);
+      } else if (scanObject === this.destinationObject.object_qr_code.qr_code_string) {
+      
         this._sendToast('Sie können nicht ein Objekt in das selbe Objekt verschieben!');
         this.enableScan();
         this.alert.dismiss();
         return;
-    } else if (this.lastScannedQrCode === scanObject.result) {
-        this.alert.dismiss();
+      } else {
+        this.lastScannedQrCode = scanObject;
+        this._moveObject(scanObject);
         return;
-    } else {
-        this.lastScannedQrCode = scanObject.result;
-        this._moveObject(scanObject.result);
-    }
-    this.alert.present();
+      }
+      console.log('lul', scanObject);
+     } else {
+      this.enableScan();
+      this.alert.dismiss();
+      return;
+     }
+
+
+  //   if (!this.destinationObject) {
+      
+  //     this.lastScannedQrCode = scanObject;
+  //     this._queryForObject(scanObject);
+  //     console.log('lul', scanObject);
+  //     console.log('SAME');
+  //     this.enableScan();
+  //     this.alert.dismiss();
+  //     return;
+  //   } else if (this.lastScannedQrCode === scanObject) {
+  // } 
+  // this.alert.present();
+
+  //   if (scanObject === this.destinationObject.object_qr_code.qr_code_string) {
+      
+  //     this._sendToast('Sie können nicht ein Objekt in das selbe Objekt verschieben!');
+  //     this.enableScan();
+  //     this.alert.dismiss();
+  //     return;
+  //   } else {
+  //     this.lastScannedQrCode = scanObject;
+  //     this._moveObject(scanObject);
+  //     return;
+  //   }
   } 
 
   /**
@@ -156,9 +197,7 @@ export class MoveObjectPage {
    * sets the propertry shouldScan to true
    */
   enableScan() {
-    setInterval(() => {
       this.shouldScan = true;
-    },1000);
   }
 
   /**
