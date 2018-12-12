@@ -59,15 +59,11 @@ export class ObjectDetailPage {
 
   getContents(id) {
     this.objp.getObject(`objects/${id}/content`, null, this.objp.getHeaders())
-
     .then((res) => {
       this.content = JSON.parse(res.data).body;
     })
     .catch((error) => {
-      console.log('error: ', error);
-
-    })
-    .then(() => { //finally 
+      console.log('error getContents: ', error);
 
     })
   }
@@ -86,7 +82,6 @@ export class ObjectDetailPage {
         if (currentObject.object_parent) {
           currentObject = currentObject.object_parent;
         }
-       
       }
       this.stack.push(currentObject);
       this.segmentChanged();
@@ -95,10 +90,7 @@ export class ObjectDetailPage {
       
     })
     .catch((error) => {
-      console.log('error: ', error);
-
-    })
-    .then(() => { //finally 
+      console.log('error getStack: ', error);
 
     })
   }
