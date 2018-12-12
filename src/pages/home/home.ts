@@ -27,8 +27,10 @@ export class HomePage {
         break;
       case 'move':
         this.navCtrl.push(MoveObjectPage);
+        break;
       case 'remove':
       this.navCtrl.push(RemoveObjectPage);
+      break;
     default:
         break;
     }

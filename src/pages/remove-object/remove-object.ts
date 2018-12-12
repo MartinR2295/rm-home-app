@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { RMHObjectModel } from '../../app/models/RMHObjectModel';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ObjectProvider } from '../../providers/object/object';
 import { InventoryModel } from '../../app/models/InventoryModel';
-import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { ToastController } from 'ionic-angular';
 import { ScannerComponent } from '../../components/scanner/scanner';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 /**
  * Generated class for the RemoveObjectPage page.
@@ -32,11 +31,11 @@ export class RemoveObjectPage {
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
     private objp: ObjectProvider,
-    private alertCtrl:AlertController,
-    private toastCtrl: ToastController) { }
+    private toastCtrl: ToastController,
+    private spinner: SpinnerDialog) { }
 
     ionViewDidEnter() {
-    console.log('ionViewDidLoad MoveObjectPage');
+    console.log('ionViewDidLoad RemoveObjectPage');
     this.scannerComponent.startScanner();
   }
 
@@ -63,27 +62,17 @@ export class RemoveObjectPage {
  */
   _startMovingProcess(scanObject) {
     this.shouldScan = false; // stops us from receiving new scan results while moving
-    this.alert = this.alertCtrl.create({
-      title: 'Loading',
-      subTitle: `<div class="circle-loader">
-      <div class="checkmark draw"></div>
-    </div>`,
-      buttons: null,
-    });
-
-    console.log('SAME');
-
 
     if (this.lastScannedQrCode != scanObject) {
-      this.alert.present();
+      this.spinner.show();
         this.lastScannedQrCode = scanObject;
         this._queryForObject(scanObject);      
         this.enableScan();
-        this.alert.dismiss();
+        this.spinner.hide();
         return;
      } else {
       this.enableScan();
-      this.alert.dismiss();
+      this.spinner.hide();
       return;
      }
     }
@@ -108,7 +97,7 @@ export class RemoveObjectPage {
       .then(() => { //finally 
         console.log('finally queryForObject', this.arrayOfRMHObjects);
         this.enableScan();
-        this.alert.dismiss();
+        this.spinner.hide();
       })
   }
 
