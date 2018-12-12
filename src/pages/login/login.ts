@@ -41,6 +41,7 @@ export class LoginPage {
 
   clickLogin() {
     this.spinnerDialog.show();
+    console.log("click login");
     this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
       this.spinnerDialog.hide();
       if(status == 200) {
