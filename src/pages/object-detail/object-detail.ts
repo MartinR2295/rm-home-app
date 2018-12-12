@@ -31,8 +31,7 @@ export class ObjectDetailPage {
       console.log('constructor ObjectDetailPage');
     this.object = JSON.parse(this.navParams.get('object'));
 
-    this.getContents(this.object.object_id);
-    //this.getStack(this.object.object_id);
+    this.getObjectDetails(this.object.object_id);
   }
 
   ionViewDidLoad() {
@@ -60,7 +59,7 @@ export class ObjectDetailPage {
       {'object'  : JSON.stringify(object)} );
   }
 
-  getContents(id) {
+  getObjectDetails(id) {
     console.log(' start contents: ');
     this.objp.getObject(`objects/${id}/detail`, null, this.objp.getHeaders())
     .then((res) => {
@@ -87,33 +86,6 @@ export class ObjectDetailPage {
     })
     .catch((error) => {
       console.log('error getContents: ', error);
-
-    })
-  }
-
-  getStack(id) {
-    console.log(' start stack: ');
-    this.objp.getObject(`objects/${id}/stack`, null, this.objp.getHeaders())
-    .then((res) => {
-      console.log('stack: ', res);
-
-      var currentObject:RMHObjectModel = JSON.parse(res.data).body;
-
-      while (currentObject.object_parent) {
-        this.stack.push(currentObject); 
-
-        if (currentObject.object_parent) {
-          currentObject = currentObject.object_parent;
-        }
-      }
-      this.stack.push(currentObject);
-      this.segmentChanged();
-
-      console.log('this.stack ', this.stack);
-      
-    })
-    .catch((error) => {
-      console.log('error getStack: ', error);
 
     })
   }

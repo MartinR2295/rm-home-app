@@ -15,7 +15,7 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public session: SessionProvider) {
     if(platform.is('core') || platform.is('mobileweb')) {
-      this.rootPage = LoginPage;
+      this.rootPage = TabsPage;
       return;
     }
    console.log("constructor of app.component.ts")
@@ -24,7 +24,7 @@ export class MyApp {
      this.session.restore().then((isAuthenticated: Boolean) => {
       console.log("then of app.component.ts")
         if (isAuthenticated) {
-          this.rootPage = LoginPage;
+          this.rootPage = TabsPage;
         } else {
           this.rootPage = LoginPage;
         }
