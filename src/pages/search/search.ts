@@ -46,12 +46,12 @@ export class SearchPage {
         // alert(this.searchTerm)
      return this.objProvider.searchObject("objects/search/" + this.searchTerm + offset).then((objects: any) => {
           console.log("objects", objects, JSON.parse(objects.data));
+          if (this.searchTerm != this.searchTermTemp) {
+            this.items = [];
+          }
+          this.searchTermTemp = this.searchTerm;
           JSON.parse(objects.data).body.forEach(element => {
             console.log("Element",element);
-            if (this.searchTerm != this.searchTermTemp) {
-              this.items = [];
-            }
-            this.searchTermTemp = this.searchTerm;
             this.items.push(element);
           });
           
