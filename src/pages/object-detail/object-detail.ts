@@ -94,9 +94,9 @@ export class ObjectDetailPage {
       console.log('error getContents: ', error);
     })
   }
-  editObject(object){
-    console.log('object id is', object.object_id);
+  editObject(){
+    console.log('object id is', this.object.object_id);
     this.navCtrl.push(ObjectEditPage, 
-      {'object'  : JSON.stringify(object)} );
+      {'object'  : JSON.stringify(this.object)} );
   }
 }

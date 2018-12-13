@@ -4,6 +4,7 @@ import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { ObjectProvider } from '../../providers/object/object';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
+import { QRCodeModel } from '../../app/models/QRCodeModel';
 
 /**
  * Generated class for the ObjectEditPage page.
@@ -29,11 +30,10 @@ export class ObjectEditPage {
     private spinnerDialog: SpinnerDialog) {
       this.editObject = JSON.parse(this.navParams.get('object'));
       console.log("Object", this.editObject);
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ObjectEditPage');
-    this.getObject();
+      if(this.editObject.object_qr_code == undefined) {
+          this.editObject.object_qr_code = new QRCodeModel();
+          this.editObject.object_qr_code.qr_code_string = this.editObject.qr_code_string;
+      }
   }
 
   clickSave(){
@@ -41,6 +41,7 @@ export class ObjectEditPage {
         this.editObject.qr_code_string = this.editObject.object_qr_code.qr_code_string;
         this.object.updateObject(`objects/${this.editObject.object_id}`,this.editObject,this.object.getHeaders())
         .then((item: any) => {
+        console.log("item", item);
         this.spinnerDialog.hide();
         this.alertHelper.sendAlert("Erfolg","Objekt wurde erfolgreich editiert");
         this.editObject.object_name = JSON.parse(item.data).body.object_name;
@@ -52,17 +53,4 @@ export class ObjectEditPage {
         return error;
     });
 }
-
-
-  getObject(){
-    console.log(this.editObject.object_id)
-    this.object.getObject(`objects/${this.editObject.object_id}/detail`, null, this.object.getHeaders())
-    .then((res) => {
-      JSON.parse(res.data).body.content.forEach(element => {
-        console.log(element);
-        this.editObject = element;
-        this.content.push(this.editObject);
-      })
-    })
-  }
 }

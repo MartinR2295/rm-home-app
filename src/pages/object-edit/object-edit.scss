@@ -9,4 +9,9 @@ page-object-edit {
         float: left;
     }
 
+    ion-header {
+        ion-icon {
+            color: color($colors, primaryTitle, base);
+        }
+    }
 }

@@ -34,4 +34,10 @@ page-object-detail {
         font-size: 80%; 
         font-weight: bold;
     }
+
+    ion-header {
+        ion-icon {
+            color: color($colors, primaryTitle, base);
+        }
+    }
 }
