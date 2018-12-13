@@ -44,10 +44,12 @@ export class AddProductPage {
     console.log(this.objp.getHeaders());
     this.spinnerDialog.show();
     this.objp.addObject('objects', this.model, this.objp.getHeaders()).then(data => {
-      message = `Your object with the name ${this.model.object_name} and the qrcode ${this.model.qr_code_string} was added`;
+      this.model.object_qr_code.qr_code_string = null;
+      this.model.object_name = null;
+      message = `Das Objekt mit dem Namen ${this.model.object_name} und dem Code ${this.model.qr_code_string} wurde hinzugefügt!`;
     })
     .catch((error) => {
-      message = `An error has happened: ${JSON.parse(error.error).error.message}`;
+      message = `Es ist ein Fehler aufgetreten: ${JSON.parse(error.error).error.message}`;
       console.log('error in add product', error);
       title = 'ERROR';
     })
