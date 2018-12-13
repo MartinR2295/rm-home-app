@@ -60,9 +60,12 @@ export class SettingsPage {
 }
 
   getUser(){
+    this.spinnerDialog.show()
     this.userProvider.getUserData().then((item: UserModel) => {
+      this.spinnerDialog.hide();
       this.userData = item;
     }).catch(error => {
+        this.spinnerDialog.hide();
         console.log("error",error); // error message as string
         return error;
     });

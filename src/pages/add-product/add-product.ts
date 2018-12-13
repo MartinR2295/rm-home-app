@@ -6,6 +6,7 @@ import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
 import { SessionProvider } from '../../providers/session/session';
 import { ScanViewPage } from '../scan-view/scan-view';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 /**
  * Generated class for the AddProductPage page.
  *
@@ -28,7 +29,8 @@ export class AddProductPage {
     public navParams: NavParams, 
     private alert: AlertHelperProvider, 
     private objp: ObjectProvider,
-    public session: SessionProvider) {
+    public session: SessionProvider,
+    private spinnerDialog: SpinnerDialog) {
   }
 
   /**
@@ -40,15 +42,20 @@ export class AddProductPage {
     let title: string = 'SUCCESS';
     console.log('THIS SESSION INSIDE ADD PRODUCT', this.session.authenticated, '<--- authenticated inside add product');
     console.log(this.objp.getHeaders());
+    this.spinnerDialog.show();
     this.objp.addObject('objects', this.model, this.objp.getHeaders()).then(data => {
-      message = `Your object with the name ${this.model.object_name} and the qrcode ${this.model.qr_code_string} was added`;
+      message = `Das Objekt mit dem Namen ${this.model.object_name} und dem Code ${this.model.qr_code_string} wurde hinzugefügt!`;
+      this.model.object_qr_code.qr_code_string = null;
+      this.model.object_name = null;
+      this.model.qr_code_string = null
     })
     .catch((error) => {
-      message = `An error has happened: ${JSON.parse(error.error).error.message}`;
+      message = `Es ist ein Fehler aufgetreten: ${JSON.parse(error.error).error.message}`;
       console.log('error in add product', error);
       title = 'ERROR';
     })
     .then(() => {
+      this.spinnerDialog.hide();
       this.alert.sendAlert(title, message);
     });
    

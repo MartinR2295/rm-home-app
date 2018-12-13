@@ -87,7 +87,6 @@ export class ScannerComponent {
 destroy() {
   window.document.querySelector('ion-app').classList.remove('cameraView');
   this.qrScanner.hide(); // hide camera preview
-  this.shouldDestroyScanner = true;
   this.qrScanner.destroy();
   console.log('destroyed');
 }

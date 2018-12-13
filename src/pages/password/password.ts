@@ -5,6 +5,7 @@ import { BaseProvider } from '../../providers/base/base';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { UserModel } from '../../app/models/UserModel';
 import { Response } from '@angular/http';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
 /**
  * Generated class for the PasswordPage page.
@@ -28,7 +29,8 @@ export class PasswordPage {
     public navParams: NavParams, 
     public userProvider:UserProvider,
     public baseProvider:BaseProvider,
-    public alertHelper:AlertHelperProvider
+    public alertHelper:AlertHelperProvider,
+    private spinnerDialog: SpinnerDialog
     ) {
   }
 
@@ -37,10 +39,13 @@ export class PasswordPage {
   }
 
   clickReset(){
+    this.spinnerDialog.show();
     this.userProvider.resetUserPassword(this.userData).then((item: string) => {
+      this.spinnerDialog.hide();
       console.log("Item",item)
       this.alertHelper.sendAlert("Erfolg",item);
     }).catch(error => {
+        this.spinnerDialog.hide();
         console.log("error",error); // error message as string
         this.alertHelper.sendAlert("Fehler",JSON.parse(error.error).error.message);
         return error;

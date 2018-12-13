@@ -3,4 +3,10 @@ page-settings {
     .row-margin {
         margin-bottom: 10px;
     }
+
+    ion-header {
+        ion-icon {
+            color: color($colors, primaryTitle, base);
+        }
+    }
 }

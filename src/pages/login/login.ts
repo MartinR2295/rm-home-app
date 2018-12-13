@@ -52,6 +52,7 @@ export class LoginPage {
         this.navCtrl.push(TabsPage);
       } else {
         console.log(response.error);
+        this.errorMessages = [];
         this.errorMessages.push(JSON.parse(response.error).error.message);
       }
     });

@@ -37,9 +37,9 @@
         </div>
       </ion-item>
     </ion-list>
-      <!-- <ion-row class="row-margin">
-       <text-icon-input [placeholder]="'Objekt'" [icon]="'search'"></text-icon-input> 
-      </ion-row> -->
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
     </div>
   </ion-grid>
   </div>

@@ -12,6 +12,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AddProductPage } from '../pages/add-product/add-product';
 import { ScanViewPage } from '../pages/scan-view/scan-view';
 import { MoveObjectPage } from '../pages/move-object/move-object';
+import { RemoveObjectPage } from '../pages/remove-object/remove-object';
+import { InspectObjectPage } from '../pages/inspect-object/inspect-object';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -51,7 +53,9 @@ import { ObjectEditPage } from '../pages/object-edit/object-edit';
     PasswordPage,
     MoveObjectPage,
     ObjectDetailPage,
-    ObjectEditPage
+    ObjectEditPage,
+    RemoveObjectPage,
+    InspectObjectPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ import { ObjectEditPage } from '../pages/object-edit/object-edit';
     ObjectDetailPage,
     PasswordPage,
     MoveObjectPage,
-    ObjectEditPage
+    ObjectEditPage,
+    RemoveObjectPage,
+    InspectObjectPage
   ],
   providers: [
     HTTP,

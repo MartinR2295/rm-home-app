@@ -5,6 +5,7 @@ import { InventoryModel } from '../../app/models/InventoryModel';
 import { ObjectProvider } from '../../providers/object/object';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
 import { ObjectEditPage } from '../object-edit/object-edit';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 /**
  * Generated class for the ObjectDetailPage page.
  *
@@ -28,10 +29,10 @@ export class ObjectDetailPage {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public objp: ObjectProvider) {
+    public objp: ObjectProvider,
+    private spinnerDialog: SpinnerDialog) {
       console.log('constructor ObjectDetailPage');
     this.object = JSON.parse(this.navParams.get('object'));
-
     this.getObjectDetails(this.object.object_id);
   }
 
@@ -62,10 +63,11 @@ export class ObjectDetailPage {
 
   getObjectDetails(id) {
     console.log(' start contents: ');
+    this.spinnerDialog.show();
     this.objp.getObject(`objects/${id}/detail`, null, this.objp.getHeaders())
     .then((res) => {
       console.log(' content then: ', res);
-
+      this.spinnerDialog.hide();
       JSON.parse(res.data).body.content.forEach(element => {
         var cObj:RMHObjectModel = element;
         cObj.object_qr_code = new QRCodeModel();
@@ -86,8 +88,8 @@ export class ObjectDetailPage {
       this.segmentChanged();
     })
     .catch((error) => {
+      this.spinnerDialog.hide();
       console.log('error getContents: ', error);
-
     })
   }
   editObject(object){
