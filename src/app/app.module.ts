@@ -32,6 +32,7 @@ import { ObjectDetailPage } from '../pages/object-detail/object-detail';
 import { UserProvider } from '../providers/user/user';
 import { PasswordPage } from '../pages/password/password';
 import { QRScanner } from '@ionic-native/qr-scanner';
+import { ObjectEditPage } from '../pages/object-edit/object-edit';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     ObjectDetailPage,
     PasswordPage,
     MoveObjectPage,
-    ObjectDetailPage
+    ObjectDetailPage,
+    ObjectEditPage
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     RegisterPage,
     ObjectDetailPage,
     PasswordPage,
-    MoveObjectPage
+    MoveObjectPage,
+    ObjectEditPage
   ],
   providers: [
     HTTP,

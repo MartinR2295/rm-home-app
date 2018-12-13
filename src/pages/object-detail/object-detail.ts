@@ -4,6 +4,7 @@ import { RMHObjectModel } from '../../app/models/RMHObjectModel';
 import { InventoryModel } from '../../app/models/InventoryModel';
 import { ObjectProvider } from '../../providers/object/object';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
+import { ObjectEditPage } from '../object-edit/object-edit';
 /**
  * Generated class for the ObjectDetailPage page.
  *
@@ -88,5 +89,10 @@ export class ObjectDetailPage {
       console.log('error getContents: ', error);
 
     })
+  }
+  editObject(object){
+    console.log('object id is', object.object_id);
+    this.navCtrl.push(ObjectEditPage, 
+      {'object'  : JSON.stringify(object)} );
   }
 }

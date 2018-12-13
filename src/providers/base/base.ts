@@ -29,7 +29,8 @@ export class BaseProvider {
 
    let headers = {
     "api-key": "KcUt52Q6JC9PVeAFkwh63946k8CBt6ss",
-    'auth-token': token
+    //'auth-token': token
+    'auth-token': "050d0f7356aa413c65aabb24ff74a4af33ee4f9b34a51d9eb511e1466728a6f092378bdccff749d71ea283aa0994c3a0316ae3bd1cbb325abb2521f2884a48e4"
   }
 
   console.log("headers", headers);
