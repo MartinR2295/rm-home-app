@@ -68,9 +68,10 @@ export class MoveObjectPage {
 
     if (this.lastScannedQrCode != scanObject) {
       this.spinner.show();
+      this.lastScannedQrCode = scanObject;
       if (!this.destinationObject) {
       
-        this.lastScannedQrCode = scanObject;
+        // this.lastScannedQrCode = scanObject;
         this._queryForObject(scanObject);
       } else if (scanObject === this.destinationObject.object_qr_code.qr_code_string) {
       
@@ -79,7 +80,7 @@ export class MoveObjectPage {
         this.spinner.hide();
         return;
       } else {
-        this.lastScannedQrCode = scanObject;
+        // this.lastScannedQrCode = scanObject;
         this._moveObject(scanObject);
         return;
       }
@@ -131,6 +132,7 @@ export class MoveObjectPage {
     .then((res) => {
       console.log('res from moving', JSON.parse(res.data).body);
       this.arrayOfRMHObjects.push(JSON.parse(res.data).body.inventory_child_object);
+      this._sendToast('Erfolgreich hinzugefügt');
     })
 
     .catch((error) => {

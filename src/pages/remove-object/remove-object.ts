@@ -5,6 +5,7 @@ import { InventoryModel } from '../../app/models/InventoryModel';
 import { ToastController } from 'ionic-angular';
 import { ScannerComponent } from '../../components/scanner/scanner';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 /**
  * Generated class for the RemoveObjectPage page.
@@ -62,13 +63,12 @@ export class RemoveObjectPage {
  */
   _startMovingProcess(scanObject) {
     this.shouldScan = false; // stops us from receiving new scan results while moving
-
+    console.log('lastScanned', this.lastScannedQrCode === scanObject)
     if (this.lastScannedQrCode != scanObject) {
+
+      this.lastScannedQrCode = scanObject;
       this.spinner.show();
-        this.lastScannedQrCode = scanObject;
         this._queryForObject(scanObject);      
-        this.enableScan();
-        this.spinner.hide();
         return;
      } else {
       this.enableScan();
@@ -87,6 +87,7 @@ export class RemoveObjectPage {
 
     .then((res) => {
         this.arrayOfRMHObjects.push(JSON.parse(res.data).body.inventory_child_object);
+        this._sendToast('Erfolgreich hinzugefügt');
       })
       .catch((error) => {
         const message = `An error has happened: ${JSON.parse(error.error).error.message}`;
