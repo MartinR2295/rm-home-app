@@ -105,7 +105,7 @@ export class MoveObjectPage {
         this.destinationObject = JSON.parse(res.data).body;
         console.log('this.destinationObject', this.destinationObject);
         this.moveInstructions = `Scanne jetzt bitte Objekte die du in '${this.destinationObject.object_name}' hineinlegen willst!`;
-        
+        this._sendToast('Erfolgreich hinzugefügt');        
       })
       .catch((error) => {
         const message = `An error has happened: ${JSON.parse(error.error).error.message}`;
