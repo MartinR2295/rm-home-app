@@ -41,16 +41,40 @@ export class ObjectEditPage {
         this.editObject.qr_code_string = this.editObject.object_qr_code.qr_code_string;
         this.object.updateObject(`objects/${this.editObject.object_id}`,this.editObject,this.object.getHeaders())
         .then((item: any) => {
+          console.log("item", item);
+          this.spinnerDialog.hide();
+          if(item.status >= 300 || item.status < 200) {
+            this.alertHelper.sendAlert("Fehler",JSON.parse(item.error).error.message);
+            return;
+          }
+          this.alertHelper.sendAlert("Erfolg","Objekt wurde erfolgreich editiert");
+          this.editObject.object_name = JSON.parse(item.data).body.object_name;
+          this.editObject.qr_code_string = JSON.parse(item.data).body.object_qr_code.qr_code_string;
+      }).catch(error => {
+          this.spinnerDialog.hide();
+          console.log("error",error); // error message as string
+          this.alertHelper.sendAlert("Fehler",JSON.parse(error.message));
+          return error;
+    });
+  }
+
+  deleteObject() {
+    this.spinnerDialog.show();
+      this.object.deleteObject(`objects/${this.editObject.object_id}`,null,this.object.getHeaders())
+      .then((item: any) => {
         console.log("item", item);
         this.spinnerDialog.hide();
-        this.alertHelper.sendAlert("Erfolg","Objekt wurde erfolgreich editiert");
-        this.editObject.object_name = JSON.parse(item.data).body.object_name;
-        this.editObject.qr_code_string = JSON.parse(item.data).body.object_qr_code.qr_code_string;
-      }).catch(error => {
+        if(item.status >= 300 || item.status < 200) {
+          this.alertHelper.sendAlert("Fehler",JSON.parse(item.error).error.message);
+          return;
+        }
+        this.alertHelper.sendAlert("Erfolg","Objekt wurde erfolgreich gelöscht");
+        this.navCtrl.popToRoot();
+    }).catch(error => {
         this.spinnerDialog.hide();
         console.log("error",error); // error message as string
         this.alertHelper.sendAlert("Fehler",JSON.parse(error.message));
         return error;
-    });
-}
+  });
+  }
 }
