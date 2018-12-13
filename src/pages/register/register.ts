@@ -73,12 +73,12 @@ export class RegisterPage {
       this.spinnerDialog.hide();
       this.errorMessages = JSON.parse(error.error).error.message;
        console.log(JSON.parse(error.error).error.message);
-       
 
       });
     }
     else
     {
+      this.errorMessages = [];
       this.errorMessages.push("Passwörter müssen übereinstimmen!");
     }
      
