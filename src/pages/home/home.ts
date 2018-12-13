@@ -5,6 +5,7 @@ import { SearchPage } from '../search/search';
 import { ObjectDetailPage } from '../object-detail/object-detail';
 import { MoveObjectPage } from '../move-object/move-object';
 import { RemoveObjectPage } from '../remove-object/remove-object';
+import { InspectObjectPage } from '../inspect-object/inspect-object';
 
 
 @Component({
@@ -30,6 +31,9 @@ export class HomePage {
         break;
       case 'remove':
       this.navCtrl.push(RemoveObjectPage);
+      break;
+      case 'inspect':
+      this.navCtrl.push(InspectObjectPage);
       break;
     default:
         break;

@@ -13,6 +13,7 @@ import { AddProductPage } from '../pages/add-product/add-product';
 import { ScanViewPage } from '../pages/scan-view/scan-view';
 import { MoveObjectPage } from '../pages/move-object/move-object';
 import { RemoveObjectPage } from '../pages/remove-object/remove-object';
+import { InspectObjectPage } from '../pages/inspect-object/inspect-object';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -51,7 +52,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     PasswordPage,
     MoveObjectPage,
     ObjectDetailPage,
-    RemoveObjectPage
+    RemoveObjectPage,
+    InspectObjectPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
     ObjectDetailPage,
     PasswordPage,
     MoveObjectPage,
-    RemoveObjectPage
+    RemoveObjectPage,
+    InspectObjectPage
   ],
   providers: [
     HTTP,
