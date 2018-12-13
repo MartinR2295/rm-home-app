@@ -87,7 +87,7 @@ export class RemoveObjectPage {
 
     .then((res) => {
         this.arrayOfRMHObjects.push(JSON.parse(res.data).body.inventory_child_object);
-        this._sendToast('Erfolgreich hinzugefügt');
+        this._sendToast('Erfolgreich entfernt');
       })
       .catch((error) => {
         const message = `An error has happened: ${JSON.parse(error.error).error.message}`;
