@@ -3,7 +3,7 @@
     <ion-title>Home</ion-title>
     <ion-buttons end (click)="clickAddObject()">
     <button>
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="add-circle"></ion-icon>
     </button>
   </ion-buttons>
   </ion-navbar>
@@ -20,10 +20,6 @@
   <ion-row>
     <ion-col> <menu-card [icon]="'eye'" (click)="push('add');" [text]="'Objekt ansehen'"></menu-card> </ion-col>
     <ion-col> <menu-card [icon]="'trash'" (click)="push('search');" [text]="'Objekt löschen'"></menu-card> </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col> <menu-card [icon]="'people'" (click)="push('add');" [text]="'Objekt ausleihen'"></menu-card> </ion-col>
-    <ion-col> <menu-card [icon]="'logo-euro'" (click)="push('search');" [text]="'Objekt verkaufen'"></menu-card> </ion-col>
   </ion-row>
   
 </ion-grid>
