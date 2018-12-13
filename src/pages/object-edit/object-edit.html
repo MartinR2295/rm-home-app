@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Objekt editieren</ion-title>
+    <ion-buttons end (click)="deleteObject()">
+        <button>
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row class="row-margin">
+        <default-input type="text" placeholder=" Object Name" [(value)]="editObject.object_name">
+      </default-input> 
+      </ion-row>
+      <ion-row>
+          <default-input type="text" placeholder=" objXXXXXXXXXXXXXX" [(value)]="editObject.object_qr_code.qr_code_string">
+        </default-input>
+      </ion-row>
+    <p>
+      <dark-button [text]="'Speichern'" (click)="clickSave()"></dark-button>
+    </p>
+  </ion-grid>
+</ion-content>

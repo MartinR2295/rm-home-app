@@ -6,9 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Detailansicht</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Detailansicht</ion-title>
+        <ion-buttons end *ngFor="let obj of currentObjects" (click)="editObject(obj)">
+        <button>
+          <ion-icon name="brush"></ion-icon>
+        </button>
+      </ion-buttons>
+      </ion-navbar>
 
   <ion-segment mode="md" color="secondary" (ionChange)="segmentChanged()" [(ngModel)]="displayMode">
       <ion-segment-button value="position">
