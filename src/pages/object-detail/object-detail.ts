@@ -55,9 +55,11 @@ export class ObjectDetailPage {
   }
 
   clickObject(object) {
-    console.log('object id is', object.object_id);
-    this.navCtrl.push(ObjectDetailPage, 
+    if(object.object_id != this.object.object_id) {
+      console.log('object id is', object.object_id);
+      this.navCtrl.push(ObjectDetailPage, 
       {'object'  : JSON.stringify(object)} );
+    }
   }
 
   getObjectDetails(id) {
