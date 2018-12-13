@@ -39,8 +39,4 @@ export class HomePage {
         break;
     }
   }
-
-  clickAddObject() {
-    this.navCtrl.push(AddProductPage);
-  }
 }
