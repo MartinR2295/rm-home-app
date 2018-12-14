@@ -40,6 +40,9 @@ export class ObjectDetailPage {
     console.log('ionViewDidLoad ObjectDetailPage');
   }
 
+  /**
+   * change the objects, if the user switch the segment element
+   */
   segmentChanged() {
     switch (this.displayMode) {
       case "position":
@@ -55,17 +58,24 @@ export class ObjectDetailPage {
     console.log("currentObjects: ", this.currentObjects)
   }
 
+  /**
+   * open a new object detail-screen, if the user click on a single object
+   * @param object 
+   */
   clickObject(object) {
-    if(object.object_id != this.object.object_id) {
+    if(object.object_id != this.object.object_id) { //check if the user click on the current shown object
       console.log('object id is', object.object_id);
       this.navCtrl.push(ObjectDetailPage, 
       {'object'  : JSON.stringify(object)} );
     }
   }
 
+  /**
+   * api call to get the content, the position and the details of the object itself
+   * @param id 
+   */
   getObjectDetails(id) {
-    console.log(' start contents: ');
-    this.spinnerDialog.show();
+    this.spinnerDialog.show(); //show spinner
     this.objp.getObject(`objects/${id}/detail`, null, this.objp.getHeaders())
     .then((res) => {
       console.log(' content then: ', res);

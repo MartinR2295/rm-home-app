@@ -61,12 +61,15 @@ export class MoveObjectPage {
  * @param scanObject 
  */
   _startMovingProcess(scanObject) {
+    
+    if (this.lastScannedQrCode === scanObject) {
+      console.log('SAME');
+      return;
+    }
     this.shouldScan = false; // stops us from receiving new scan results while moving
-
-    console.log('SAME');
-
-
+    
     if (this.lastScannedQrCode != scanObject) {
+      console.log('cock GORILLA');
       this.spinner.show();
       this.lastScannedQrCode = scanObject;
       if (!this.destinationObject) {
@@ -86,6 +89,7 @@ export class MoveObjectPage {
       }
       console.log('lul', scanObject);
      } else {
+      console.log('spinner HIDE');
       this.enableScan();
       this.spinner.hide();
       return;
