@@ -21,11 +21,8 @@ export class MyApp {
     }
 
     //load the auth-token
-   console.log("constructor of app.component.ts")
     platform.ready().then(() => {
-      console.log("platform ready of app.component.ts")
      this.session.restore().then((isAuthenticated: Boolean) => {
-      console.log("then of app.component.ts")
         if (isAuthenticated) {
           this.rootPage = TabsPage;
         } else {
@@ -37,7 +34,6 @@ export class MyApp {
          splashScreen.hide();
        })
     }).catch((error) => {
-      console.log("catch function in app.component")
       this.rootPage = LoginPage;
     });
   }

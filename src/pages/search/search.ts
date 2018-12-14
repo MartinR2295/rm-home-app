@@ -26,13 +26,11 @@ export class SearchPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
    this.filteredItems();
   
   }
 
   filteredItems(){
-    console.log(this.searchTerm);
     if(this.searchTerm.length == 0)
     {
       this.items = [];
@@ -50,7 +48,6 @@ export class SearchPage {
         // alert(this.searchTerm)
         if (this.searchTerm != this.searchTermTemp) {
         this.offset = 0;
-        console.log('reset to []');
         this.items = [];
            }
            this.searchTermTemp = this.searchTerm;
@@ -60,12 +57,10 @@ export class SearchPage {
           });
           
         }).catch(error => {
-            console.log("search api error", error.error); // error message as string
             return error;
         });
   }
   viewDetail(object) {
-    console.log('object id is', object.object_id);
     this.navCtrl.push(ObjectDetailPage, 
       {'object'  : JSON.stringify(object)} );
   }
@@ -76,7 +71,6 @@ export class SearchPage {
    */
   doInfinite(infiniteScroll) {
     this.offset += 20;
-    console.log('Begin async operation');
     this._queryForObject(`?offset=${this.offset.toString()}`).then((data) => {
 
       infiniteScroll.complete();

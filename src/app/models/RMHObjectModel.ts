@@ -17,11 +17,5 @@ export class RMHObjectModel extends BaseModel {
       Object.assign(this, input);
       return this;
     }
-    /** Delegates to updateObject with object data
-     * @param data 
-     */
-    save() {
-      console.log();
-      // return this.objp.updateObject('object', JSON.stringify(this));
-    }
+
   }

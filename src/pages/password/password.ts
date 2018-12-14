@@ -34,21 +34,15 @@ export class PasswordPage {
     ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PasswordPage');
-  }
-
   //Passwort zurücksetzen
   clickReset(){
     this.spinnerDialog.show();
     //API Call auf den User Provider 
     this.userProvider.resetUserPassword(this.userData).then((item: string) => {
       this.spinnerDialog.hide();
-      console.log("Item",item)
       this.alertHelper.sendAlert("Erfolg",item);
     }).catch(error => {
         this.spinnerDialog.hide();
-        console.log("error",error); // error message as string
         this.alertHelper.sendAlert("Fehler",JSON.parse(error.error).error.message);
         return error;
     });

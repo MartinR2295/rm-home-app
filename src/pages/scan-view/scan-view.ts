@@ -30,7 +30,6 @@ export class ScanViewPage {
    * opens the scanner on init
    */
   ionViewDidLoad() {
-    console.log('hi');
 
  this.qrScanner.prepare()
     .then((status: QRScannerStatus) => {
@@ -42,7 +41,6 @@ export class ScanViewPage {
 
         this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
 
-          console.log('Scanned something', text);
           window.document.querySelector('ion-app').classList.remove('cameraView');
           this.qrScanner.hide(); // hide camera preview
           

@@ -46,7 +46,6 @@ export class ObjectProvider extends BaseProvider {
    * @param route the route (eg. object)
    */
   addObject(route, data, options = {}) {
-    console.log(BaseProvider.backpointURL + `/${route}`);
    return this.http.post(BaseProvider.backpointURL + `/${route}`, data, options)
    
   }
@@ -56,7 +55,6 @@ export class ObjectProvider extends BaseProvider {
    * @param route the route (eg. object)
    */
   updateObject(route, data, options = {}) {
-    console.log(BaseProvider.backpointURL + `/${route}`);
    return this.http.put(BaseProvider.backpointURL + `/${route}`, data, options)
     .then(res => {
       console.log(res.data); // data received by server

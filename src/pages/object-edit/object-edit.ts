@@ -30,7 +30,6 @@ export class ObjectEditPage {
     public alertHelper:AlertHelperProvider,
     private spinnerDialog: SpinnerDialog) {
       this.editObject = JSON.parse(this.navParams.get('object'));
-      console.log("Object", this.editObject);
       if(this.editObject.object_qr_code == undefined) {
           this.editObject.object_qr_code = new QRCodeModel();
           this.editObject.object_qr_code.qr_code_string = this.editObject.qr_code_string;
@@ -44,7 +43,6 @@ export class ObjectEditPage {
         //API Call auf den Object Provider mit der richtigen Route
         this.object.updateObject(`objects/${this.editObject.object_id}`,this.editObject,this.object.getHeaders())
         .then((item: any) => {
-          console.log("item", item);
           this.spinnerDialog.hide();
           //Wenn ein Fehler auftritt mit dem Alert Helper eine POPup Nachricht anzeigen
           if(item.status >= 300 || item.status < 200) {
@@ -56,7 +54,6 @@ export class ObjectEditPage {
           this.editObject.qr_code_string = JSON.parse(item.data).body.object_qr_code.qr_code_string;
       }).catch(error => {
           this.spinnerDialog.hide();
-          console.log("error",error); // error message as string
           this.alertHelper.sendAlert("Fehler",JSON.parse(error.message));
           return error;
     });
@@ -68,7 +65,6 @@ export class ObjectEditPage {
     //API Call auf den Object Provider
       this.object.deleteObject(`objects/${this.editObject.object_id}`,null,this.object.getHeaders())
       .then((item: any) => {
-        console.log("item", item);
         this.spinnerDialog.hide();
         if(item.status >= 300 || item.status < 200) {
           this.alertHelper.sendAlert("Fehler",JSON.parse(item.error).error.message);
@@ -78,7 +74,6 @@ export class ObjectEditPage {
         this.navCtrl.popToRoot();
     }).catch(error => {
         this.spinnerDialog.hide();
-        console.log("error",error); // error message as string
         this.alertHelper.sendAlert("Fehler",JSON.parse(error.message));
         return error;
   });
@@ -103,7 +98,6 @@ getData = data =>
     if (data.scannedText.result) {
       this.editObject.object_qr_code.qr_code_string = data.scannedText.result;
     }
-    console.log(data.scannedText);
     resolve();
   });
 };

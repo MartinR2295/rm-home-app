@@ -38,11 +38,9 @@ export class InspectObjectPage {
     private spinner: SpinnerDialog) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InspectObjectPage');
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidLoad RemoveObjectPage');
     this.scannerComponent.startScanner();
   }
 
@@ -51,7 +49,6 @@ export class InspectObjectPage {
  * @param scanObject 
  */
 getScanResult(scanObject) {
-  console.log('scanObject', scanObject);
   let scanedResult = scanObject;
   if (scanObject.result) {
     scanedResult = scanObject.result;
@@ -69,7 +66,6 @@ getScanResult(scanObject) {
  */
 _startInspectProcess(scanObject) {
   this.shouldScan = false; // stops us from receiving new scan results while moving
-  console.log('lastScanned', this.lastScannedQrCode === scanObject)
   if (this.lastScannedQrCode != scanObject) {
 
     this.lastScannedQrCode = scanObject;
@@ -96,7 +92,6 @@ _startInspectProcess(scanObject) {
 
         this.model = JSON.parse(res.data).body;
         this._sendToast('Erfolgreich gescannt');    
-        console.log(this.model);    
       })
       .catch((error) => {
         const message = `An error has happened: ${JSON.parse(error.error).error.message}`;
@@ -105,7 +100,6 @@ _startInspectProcess(scanObject) {
       this._sendToast(message);
       })
       .then(() => { //finally 
-        console.log('finally queryForObject');
         this.enableScan();
         this.spinner.hide();
       })
@@ -135,12 +129,10 @@ _sendToast(message) {
  * destroy the scanner when page is left / tabs changed
  */
 ionViewWillLeave() {
-  console.log('ionViewWillLeave');
   this.scannerComponent.destroy();
 }
 
 viewDetailPage(object) {
-  console.log('object id is', object.object_id);
   this.navCtrl.push(ObjectDetailPage, 
     {'object'  : JSON.stringify(object)} );
 }

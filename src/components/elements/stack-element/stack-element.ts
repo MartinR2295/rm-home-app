@@ -15,7 +15,6 @@ export class StackElementComponent {
   text: string;
 
   constructor() {
-    console.log('Hello StackElementComponent Component');
     this.text = 'Hello World';
   }
 

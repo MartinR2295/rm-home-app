@@ -38,10 +38,6 @@ export class RegisterPage {
     private spinnerDialog: SpinnerDialog ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
-  }
-
   /**
    * Function für die Registrierung eines neuen Benutzers
    */
@@ -56,14 +52,12 @@ export class RegisterPage {
       this.objProvider.post('https://rm-home.rmst.eu/users',this.registerData)
       .then((result) => {
         this.spinnerDialog.hide();
-        console.log("success");
           this.alertHelper.sendAlert("Registriert","Sie wurden erfolgreich Registriert",[{text: "Ok", handler: () => {
             this.spinnerDialog.show();
             this.authProvider.getAuthToken(loginModel, (status: Number, response) => {
               this.spinnerDialog.hide();
               if(status == 200) {
                 this._saveToSession(response);
-                console.log(loginModel, 'response: ', response);
                 this.navCtrl.push(TabsPage);
               }
             }); 
@@ -72,7 +66,6 @@ export class RegisterPage {
       .catch((error) => {
       this.spinnerDialog.hide();
       this.errorMessages = JSON.parse(error.error).error.message;
-       console.log(JSON.parse(error.error).error.message);
 
       });
     }

@@ -16,17 +16,13 @@ export class SessionProvider {
   public authenticated: any;
   public secureStorage: SecureStorage = new SecureStorage();
 
-  constructor() {
-    console.log("constructor of session.ts")
-    // this.restore();
-  }
+  constructor() { }
 
   /**
    * Saves the session
    * @param sessionData 
    */
   saveSession(sessionData) {
-    console.log('the sessionData', sessionData);
     this.authenticated = {
       token: sessionData.token,
       refreshToken: sessionData.refresh_token,
@@ -35,7 +31,6 @@ export class SessionProvider {
       storage.set('authenticated', JSON.stringify(this.authenticated));
       storage.set('user', JSON.stringify(sessionData.user));
       this.isAuthenticated = true;
-      console.log('should be token', this.authenticated);
     })
   }
 
@@ -46,7 +41,6 @@ export class SessionProvider {
   return  this.secureStorage.create('session').then((storage: SecureStorageObject) => {
       return storage.get('authenticated').then((authenticated: string) => {
        this.authenticated = JSON.parse(authenticated);
-       console.log('1', this.authenticated);
        storage.get('user').then((user: string) => {
         this.user = JSON.parse(user);
        })
@@ -54,7 +48,6 @@ export class SessionProvider {
        return true;
      })
      .catch((error) => {
-       console.log('error inside restore funktion', error);
        return false;
      })
  
@@ -75,7 +68,6 @@ export class SessionProvider {
       token: sessionData.token,
       refreshToken: sessionData.refresh_token,
     };
-    console.log('set authenticated to', this.authenticated);
   }
 
   /**

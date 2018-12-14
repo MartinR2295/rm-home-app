@@ -32,7 +32,6 @@ export class SettingsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage'); 
     this.getUser(); 
   }
 
@@ -56,7 +55,6 @@ export class SettingsPage {
       this.userData.user_username = JSON.parse(item.data).body.user_username;
     }).catch(error => {
       this.spinnerDialog.hide();
-      console.log("error",error); // error message as string
       return error;
   });
 }
@@ -70,7 +68,6 @@ export class SettingsPage {
       this.userData = item;
     }).catch(error => {
         this.spinnerDialog.hide();
-        console.log("error",error); // error message as string
         return error;
     });
   }

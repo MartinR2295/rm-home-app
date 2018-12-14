@@ -31,13 +31,8 @@ export class ObjectDetailPage {
     public navParams: NavParams,
     public objp: ObjectProvider,
     private spinnerDialog: SpinnerDialog) {
-      console.log('constructor ObjectDetailPage');
     this.object = JSON.parse(this.navParams.get('object'));
     this.getObjectDetails(this.object.object_id);
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ObjectDetailPage');
   }
 
   /**
@@ -55,7 +50,6 @@ export class ObjectDetailPage {
         break;
     }
 
-    console.log("currentObjects: ", this.currentObjects)
   }
 
   /**
@@ -64,7 +58,6 @@ export class ObjectDetailPage {
    */
   clickObject(object) {
     if(object.object_id != this.object.object_id) { //check if the user click on the current shown object
-      console.log('object id is', object.object_id);
       this.navCtrl.push(ObjectDetailPage, 
       {'object'  : JSON.stringify(object)} );
     }
@@ -78,7 +71,6 @@ export class ObjectDetailPage {
     this.spinnerDialog.show(); //show spinner
     this.objp.getObject(`objects/${id}/detail`, null, this.objp.getHeaders())
     .then((res) => {
-      console.log(' content then: ', res);
       this.spinnerDialog.hide();
       JSON.parse(res.data).body.content.forEach(element => {
         var cObj:RMHObjectModel = element;
@@ -101,11 +93,9 @@ export class ObjectDetailPage {
     })
     .catch((error) => {
       this.spinnerDialog.hide();
-      console.log('error getContents: ', error);
     })
   }
   editObject(){
-    console.log('object id is', this.object.object_id);
     this.navCtrl.push(ObjectEditPage, 
       {'object'  : JSON.stringify(this.object)} );
   }

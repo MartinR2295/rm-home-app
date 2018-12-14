@@ -20,15 +20,10 @@ export class AuthProvider extends BaseProvider {
     this.post(BaseProvider.backpointURL+"/auth", loginModel)
     .then(res => {
       callback(res.status, res);
-      console.log("then auth token")
-      console.log(res.data); // data received by server
       //return res;
       return res;
     })
     .catch(error => {
-      console.log(error.error); // error message as string
-      console.log("catch auth token");
-      console.log(error);
       callback(error.status, error);
       return error;
     });

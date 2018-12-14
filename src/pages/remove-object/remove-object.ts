@@ -36,7 +36,6 @@ export class RemoveObjectPage {
     private spinner: SpinnerDialog) { }
 
     ionViewDidEnter() {
-    console.log('ionViewDidLoad RemoveObjectPage');
     this.scannerComponent.startScanner();
   }
 
@@ -45,7 +44,6 @@ export class RemoveObjectPage {
  * @param scanObject 
  */
   getScanResult(scanObject) {
-    console.log('scanObject', scanObject);
     let scanedResult = scanObject;
     if (scanObject.result) {
       scanedResult = scanObject.result;
@@ -63,7 +61,6 @@ export class RemoveObjectPage {
  */
   _startMovingProcess(scanObject) {
     this.shouldScan = false; // stops us from receiving new scan results while moving
-    console.log('lastScanned', this.lastScannedQrCode === scanObject)
     if (this.lastScannedQrCode != scanObject) {
 
       this.lastScannedQrCode = scanObject;
@@ -96,7 +93,6 @@ export class RemoveObjectPage {
       this._sendToast(message);
       })
       .then(() => { //finally 
-        console.log('finally queryForObject', this.arrayOfRMHObjects);
         this.enableScan();
         this.spinner.hide();
       })
@@ -125,7 +121,6 @@ export class RemoveObjectPage {
    * destroy the scanner when page is left / tabs changed
    */
   ionViewWillLeave() {
-    console.log('ionViewWillLeave');
     this.scannerComponent.destroy();
   }
 

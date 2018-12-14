@@ -40,8 +40,6 @@ export class AddProductPage {
     this.model.object_qr_code = this.qrcode;
     let message: string;
     let title: string = 'SUCCESS';
-    console.log('THIS SESSION INSIDE ADD PRODUCT', this.session.authenticated, '<--- authenticated inside add product');
-    console.log(this.objp.getHeaders());
     this.spinnerDialog.show();
     this.objp.addObject('objects', this.model, this.objp.getHeaders()).then(data => {
       message = `Das Objekt mit dem Namen ${this.model.object_name} und dem Code ${this.model.qr_code_string} wurde hinzugefügt!`;
@@ -51,7 +49,6 @@ export class AddProductPage {
     })
     .catch((error) => {
       message = `Es ist ein Fehler aufgetreten: ${JSON.parse(error.error).error.message}`;
-      console.log('error in add product', error);
       title = 'ERROR';
     })
     .then(() => {
@@ -79,7 +76,6 @@ export class AddProductPage {
     if (data.scannedText.result) {
       this.model.qr_code_string = data.scannedText.result;
     }
-    console.log(data.scannedText);
     resolve();
   });
 };

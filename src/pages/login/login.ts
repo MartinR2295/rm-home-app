@@ -36,24 +36,17 @@ export class LoginPage {
     private spinnerDialog: SpinnerDialog) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
   //Login Funktion für die Ermittlung des Benutzers
   clickLogin() {
     this.spinnerDialog.show();
-    console.log("click login");
     //API Call auf den auth Provider
     this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
       this.spinnerDialog.hide();
       if(status == 200) {
         this.errorMessages = null;
         this._saveToSession(response);
-        console.log(this.loginData, 'response: ', response);
         this.navCtrl.push(TabsPage);
       } else {
-        console.log(response.error);
         this.errorMessages = [];
         this.errorMessages.push(JSON.parse(response.error).error.message);
       }

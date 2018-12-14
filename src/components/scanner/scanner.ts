@@ -37,7 +37,6 @@ export class ScannerComponent {
         window.document.querySelector('ion-app').classList.add('cameraView');
 
         let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-          console.log('shouldScan inside component', this.shouldScan);
           if (this.shouldScan) {
             this.scanned(text);
           }
@@ -78,7 +77,6 @@ destroy() {
   window.document.querySelector('ion-app').classList.remove('cameraView');
   this.qrScanner.hide(); // hide camera preview
   this.qrScanner.destroy();
-  console.log('destroyed');
 }
 
 

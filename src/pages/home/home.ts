@@ -20,7 +20,6 @@ export class HomePage {
   push(p:string){
     switch (p) {
       case 'search':
-        console.log("click on object detail");
         this.navCtrl.push(ObjectDetailPage);
         break;
       case 'add':

@@ -19,10 +19,8 @@ export class BaseProvider {
    */
   getHeaders() {
    let token = '';
-   console.log('authenticated IN BASE ', this.session.authenticated, this.session);
    if ('authenticated' in this.session) { //get token from the session
        token = this.session.authenticated.token;
-       console.log('TOKEN is here', token);
    }
 
    if(token == undefined) {
@@ -33,8 +31,6 @@ export class BaseProvider {
     "api-key": "KcUt52Q6JC9PVeAFkwh63946k8CBt6ss",
     'auth-token': token
   }
-
-  console.log("headers", headers);
 
     return headers;
   }
