@@ -143,11 +143,24 @@ $check-color: $brand-success;
 }
 
 .kek {
-    div {
-        width: 33%;
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-        padding: 10px;
-    }
+    // div {
+    //     width: 33%;
+    //     display: table-cell;
+    //     text-align: center;
+    //     vertical-align: middle;
+    //     padding: 10px;
+    // }
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.kek:after {
+  content: "";
+  display: table;
+  clear: both;
 }
