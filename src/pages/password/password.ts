@@ -38,8 +38,10 @@ export class PasswordPage {
     console.log('ionViewDidLoad PasswordPage');
   }
 
+  //Passwort zurücksetzen
   clickReset(){
     this.spinnerDialog.show();
+    //API Call auf den User Provider 
     this.userProvider.resetUserPassword(this.userData).then((item: string) => {
       this.spinnerDialog.hide();
       console.log("Item",item)

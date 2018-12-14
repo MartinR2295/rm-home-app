@@ -36,6 +36,7 @@ export class SettingsPage {
     this.getUser(); 
   }
 
+  //Logout Funktion im Einstellungs Screen
   clickLogout() {
     this.navCtrl.setRoot(LoginPage);
     this.navCtrl.popToRoot();
@@ -43,9 +44,10 @@ export class SettingsPage {
     this.session.logout()
   }
 
+  //Speichern Funktion um die Benutzerdaten ändern zu können
   clickSave(){
     this.spinnerDialog.show();
-    //userData:UserModel
+    //API Call auf den User Provider 
     this.userProvider.updateUserData(this.userData)
     .then((item: any) => {
       this.spinnerDialog.hide();
@@ -59,8 +61,10 @@ export class SettingsPage {
   });
 }
 
+  //Funktion um die Daten des angemeldeten Benutzers zu bekommen (Für die Vorbefülllung der Textboxen) 
   getUser(){
     this.spinnerDialog.show()
+    //API Call auf den User Provider
     this.userProvider.getUserData().then((item: UserModel) => {
       this.spinnerDialog.hide();
       this.userData = item;
@@ -71,6 +75,7 @@ export class SettingsPage {
     });
   }
 
+  //Userdaten in dieser Session speichern
   _saveToSession(data) {
     this.session.setUser(JSON.parse(data.data).body.user);
   }

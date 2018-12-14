@@ -40,9 +40,11 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  //Login Funktion für die Ermittlung des Benutzers
   clickLogin() {
     this.spinnerDialog.show();
     console.log("click login");
+    //API Call auf den auth Provider
     this.authProvider.getAuthToken(this.loginData, (status: Number, response) => {
       this.spinnerDialog.hide();
       if(status == 200) {
@@ -58,10 +60,12 @@ export class LoginPage {
     });
   }
  
+  //Passwort zurücksetzen 
   clickPasswordReset() {
     this.navCtrl.push(PasswordPage);
   }
 
+  //Registrieren
   clickRegister(){
     this.navCtrl.push(RegisterPage);
   }

@@ -36,13 +36,16 @@ export class ObjectEditPage {
       }
   }
 
+  //Speichern Methode um die Änderungen an die API zu schicken
   clickSave(){
         this.spinnerDialog.show();
         this.editObject.qr_code_string = this.editObject.object_qr_code.qr_code_string;
+        //API Call auf den Object Provider mit der richtigen Route
         this.object.updateObject(`objects/${this.editObject.object_id}`,this.editObject,this.object.getHeaders())
         .then((item: any) => {
           console.log("item", item);
           this.spinnerDialog.hide();
+          //Wenn ein Fehler auftritt mit dem Alert Helper eine POPup Nachricht anzeigen
           if(item.status >= 300 || item.status < 200) {
             this.alertHelper.sendAlert("Fehler",JSON.parse(item.error).error.message);
             return;
@@ -58,8 +61,10 @@ export class ObjectEditPage {
     });
   }
 
+  //Object Löschen um das Objekt komplett aus dem System zu entfernen
   deleteObject() {
     this.spinnerDialog.show();
+    //API Call auf den Object Provider
       this.object.deleteObject(`objects/${this.editObject.object_id}`,null,this.object.getHeaders())
       .then((item: any) => {
         console.log("item", item);
