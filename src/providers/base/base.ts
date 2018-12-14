@@ -20,7 +20,6 @@ export class BaseProvider {
   getHeaders() {
    let token = '';
    console.log('authenticated IN BASE ', this.session.authenticated, this.session);
-   console.log(this.session.getToken())
    if ('authenticated' in this.session) { //get token from the session
        token = this.session.authenticated.token;
        console.log('TOKEN is here', token);

@@ -65,6 +65,11 @@ export class SessionProvider {
     this.user = user;
   }
 
+  /**
+   * set the local authenticated property to passed 
+   * session data containing the token 
+   * @param sessionData 
+   */
   setAuthenticated(sessionData) {
     this.authenticated = {
       token: sessionData.token,
@@ -73,10 +78,10 @@ export class SessionProvider {
     console.log('set authenticated to', this.authenticated);
   }
 
-  getToken() {
-    console.log('getToken diggih', this.authenticated);
-    return this.authenticated;
-  }
+  /**
+  * clears the local storage and clears session variables containing user and 
+  * login information   
+  */
   logout() {
     this.secureStorage.create('session').then((storage: SecureStorageObject) => {
       storage.clear();
