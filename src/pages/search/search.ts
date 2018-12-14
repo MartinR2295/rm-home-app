@@ -70,6 +70,10 @@ export class SearchPage {
       {'object'  : JSON.stringify(object)} );
   }
 
+  /**
+   * ionic infinite scroll loads data as long as there are any
+   * @param infiniteScroll 
+   */
   doInfinite(infiniteScroll) {
     this.offset += 20;
     console.log('Begin async operation');
