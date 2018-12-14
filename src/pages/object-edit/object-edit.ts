@@ -5,6 +5,7 @@ import { ObjectProvider } from '../../providers/object/object';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { AlertHelperProvider } from '../../providers/alert-helper/alert-helper';
 import { QRCodeModel } from '../../app/models/QRCodeModel';
+import { ScanViewPage } from '../scan-view/scan-view';
 
 /**
  * Generated class for the ObjectEditPage page.
@@ -77,4 +78,28 @@ export class ObjectEditPage {
         return error;
   });
   }
+
+  /**
+ * opens the scan view with data and callback parameter
+ */
+scan() {
+  this.navCtrl.push(ScanViewPage, {
+    data: null,
+    callback: this.getData
+  });
+}
+/**
+* callback handler for scan view
+*/
+getData = data =>
+{
+  return new Promise((resolve, reject) => {
+    this.editObject.object_qr_code.qr_code_string = data.scannedText;
+    if (data.scannedText.result) {
+      this.editObject.object_qr_code.qr_code_string = data.scannedText.result;
+    }
+    console.log(data.scannedText);
+    resolve();
+  });
+};
 }

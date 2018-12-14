@@ -32,7 +32,6 @@ export class ScannerComponent {
    * opens the scanner on init
    */
   startScanner() {
-    console.log('hi');
 
  this.qrScanner.prepare()
     .then((status: QRScannerStatus) => {
@@ -48,7 +47,6 @@ export class ScannerComponent {
           }
 
           if (this.shouldDestroyScanner) {
-            console.log('gay faggot');
             window.document.querySelector('ion-app').classList.remove('cameraView');
             this.qrScanner.hide(); // hide camera preview
             

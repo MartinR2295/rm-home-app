@@ -14,4 +14,18 @@ page-object-edit {
             color: color($colors, primaryTitle, base);
         }
     }
+
+    .qr-code-input {
+        width: 100%;
+    }
+    
+    .qr-code-input > default-input > base-input > input {
+        width: 88%;
+        float: left;
+    }
+    
+    .qr-code-input > #camera-icon {
+        max-width: 10%;
+        display: flex;
+    }
 }

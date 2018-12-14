@@ -18,8 +18,11 @@
       </default-input> 
       </ion-row>
       <ion-row>
+      <div class="qr-code-input">
           <default-input type="text" placeholder=" objXXXXXXXXXXXXXX" [(value)]="editObject.object_qr_code.qr_code_string">
-        </default-input>
+          </default-input> 
+          <ion-icon name="md-camera" (click)="scan()" id="camera-icon"></ion-icon>
+        </div>
       </ion-row>
     <p>
       <dark-button [text]="'Speichern'" (click)="clickSave()"></dark-button>
