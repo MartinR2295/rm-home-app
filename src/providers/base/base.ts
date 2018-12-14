@@ -14,11 +14,14 @@ export class BaseProvider {
   static readonly backpointURL = "https://rm-home.rmst.eu";
   constructor(public http: HTTP, public session: SessionProvider) {}
 
+  /**
+   * get Headers for api requests (api-key and auth-token)
+   */
   getHeaders() {
    let token = '';
    console.log('authenticated IN BASE ', this.session.authenticated, this.session);
    console.log(this.session.getToken())
-   if ('authenticated' in this.session) {
+   if ('authenticated' in this.session) { //get token from the session
        token = this.session.authenticated.token;
        console.log('TOKEN is here', token);
    }
@@ -37,10 +40,20 @@ export class BaseProvider {
     return headers;
   }
 
+  /**
+   * make a get request
+   * @param url 
+   * @param data 
+   */
   get(url, data) {
     return this.http.get(url, data, this.getHeaders());
   }
 
+  /**
+   * make a post request
+   * @param url 
+   * @param data 
+   */
   post(url, data) {
     return this.http.post(url, data, this.getHeaders());
   }
