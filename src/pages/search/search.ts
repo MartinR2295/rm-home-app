@@ -42,17 +42,20 @@ export class SearchPage {
     return this._queryForObject();
   }
 
+  /**
+   * queries for object with optional offset param
+   * @param offset 
+   */
    _queryForObject(offset: String = '') {
         // alert(this.searchTerm)
+        if (this.searchTerm != this.searchTermTemp) {
+        this.offset = 0;
+        console.log('reset to []');
+        this.items = [];
+           }
+           this.searchTermTemp = this.searchTerm;
      return this.objProvider.searchObject("objects/search/" + this.searchTerm + offset).then((objects: any) => {
-          console.log("objects", objects, JSON.parse(objects.data));
-          if (this.searchTerm != this.searchTermTemp) {
-            this.offset = 0;
-            this.items = [];
-          }
-          this.searchTermTemp = this.searchTerm;
           JSON.parse(objects.data).body.forEach(element => {
-            console.log("Element",element);
             this.items.push(element);
           });
           
