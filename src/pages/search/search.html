@@ -13,18 +13,18 @@
       <ion-title>Objektsuche</ion-title>
     </ion-navbar>
   
+    <ion-searchbar
+        [(ngModel)]="searchTerm"
+        (ionInput)="filteredItems()"
+        placeholder="Objektname"
+        mode="md">
+    </ion-searchbar>
   </ion-header>
   
   <ion-content mode="md" padding style="background-color: rgb(80, 95, 112, 0.2)">
   <div >
   <ion-grid>
       <div>
-      <ion-searchbar
-          [(ngModel)]="searchTerm"
-          (ionInput)="filteredItems()"
-          placeholder="Objektname"
-          mode="md">
-      </ion-searchbar>
       <div *ngIf="suche" class="spinner-container">
           <ion-spinner name="bubbles"></ion-spinner>
       </div>
